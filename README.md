@@ -1,4 +1,4 @@
-# Ebay
+# Event Bay
 
 Gabriel Castro
 
