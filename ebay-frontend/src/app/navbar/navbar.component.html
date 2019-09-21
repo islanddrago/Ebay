@@ -1,0 +1,4 @@
+<header>
+  <button (click)="auth.login()" *ngIf="!auth.loggedIn">login</button>
+  <button (click)="auth.logout()" *ngIf="auth.loggedIn">logout</button>
+</header>
