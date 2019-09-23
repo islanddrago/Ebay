@@ -1,4 +1,7 @@
-import express from "express";
+import express, { Request, Response } from "express";
+import jwt from "express-jwt";
+import jwks from "jwks-rsa";
+import fetch from "node-fetch";
 import UserController from "./controllers/user/user.controller";
 
 /**
@@ -11,7 +14,45 @@ import UserController from "./controllers/user/user.controller";
  */
 
 const app = express();
-const port = 6969; // TODO: make this an environment variable `PORT` so it can bind to the port on Heroku
+const port = process.env.PORT || 6969;
+const jwtCheck = jwt({
+  algorithms: ["RS256"],
+  audience: "https://ebay/api",
+  issuer: "https://dev-ebay.auth0.com/",
+  secret: jwks.expressJwtSecret({
+    cache: true,
+    jwksRequestsPerMinute: 10,
+    jwksUri: "https://dev-ebay.auth0.com/.well-known/jwks.json",
+    rateLimit: true,
+  }),
+});
+
+/**
+ * authenticate - middleware
+ * configure middleware to check for a token and apply user data to the request object
+ */
+function authenticate(req: Request, res: Response, next: any) {
+  console.log("token: ", `Bearer ${req.headers.token}`);
+  fetch(`https://dev-ebay.auth0.com/api/v2/users/auth0%7C5d870ad261cc980deca26591`, {
+    headers: {
+      Authorization: `Bearer ${req.headers.token}`,
+    },
+  })
+    .then((resp) => resp.json())
+    .then((response) => {
+      console.log("response: ", response);
+      // if (response.status === 200) {
+      //   req.user = response.body;
+      // }
+      // return next();
+    }).catch((err: any) => {
+      res.status(400).json({ err });
+    });
+}
+
+// middleware
+app.use(jwtCheck);
+app.use(authenticate);
 
 // use controllers to manage different endpoints
 app.use("/user", UserController);
