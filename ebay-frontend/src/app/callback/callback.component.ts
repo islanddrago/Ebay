@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/services/auth.service';
 
 @Component({
-  selector: 'app-callback',
+  selector: 'callback',
   templateUrl: './callback.component.html',
   styleUrls: ['./callback.component.scss']
 })
