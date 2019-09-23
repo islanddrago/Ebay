@@ -4,10 +4,10 @@ import UserController from "./controllers/user/user.controller";
 /**
  * index.ts
  * entry point for Express server
- * 
+ *
  * tutorials followed to set up:
- * To create the project using TypeScript:                            https://developer.okta.com/blog/2018/11/15/node-express-typescript
- * To get an idea of how to structure it (didn't follow it exactly):  https://medium.com/the-andela-way/structuring-an-express-js-api-fc62efa038c5
+ * https://developer.okta.com/blog/2018/11/15/node-express-typescript
+ * https://medium.com/the-andela-way/structuring-an-express-js-api-fc62efa038c5
  */
 
 const app = express();

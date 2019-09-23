@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/services/auth.service';
+/**
+ * Entry component for Angular application
+ * Tutorials followed:
+ * https://auth0.com/docs/quickstart/spa/angular2
+ */
 
 @Component({
   selector: 'app-root',
@@ -10,7 +15,6 @@ export class AppComponent implements OnInit {
   profile: any;
   user: any;
   token: string;
-
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
