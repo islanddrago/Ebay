@@ -16,13 +16,13 @@ export class AuthService {
       domain: "dev-ebay.auth0.com",
       client_id: "0FA3dvWV4I07VTid3BqJUTo49nM6rWIH",
       redirect_uri: `${window.location.origin}/callback`,
-      scope: 'read:users read:user_idp_tokens',
-      audience: 'https://ebay/api',
+      scope: 'read:users read:user_idp_tokens read:current_user',
+      audience: 'https://dev-ebay.auth0.com/api/v2/',
     })
   ) as Observable<Auth0Client>).pipe(
     shareReplay(1), // Every subscription receives the same shared value
     map((client: Auth0Client) => {
-      client.getTokenSilently().then((token) => this.token$.next(token)); // { audience: 'https://ebay/api' } as GetTokenSilentlyOptions
+      client.getTokenSilently().then((token) => this.token$.next(token)); // { audience: 'https://api.eventbay.org' } as GetTokenSilentlyOptions
       return client;
     }),
     catchError(err => throwError(err))
