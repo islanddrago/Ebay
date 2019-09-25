@@ -9,7 +9,7 @@ router.get("/test", test);
 router.post("/login", loginUser);
 
 function test(req: Request, res: Response) {
-  res.status(200).send("Test");
+  res.status(200).json(req.user);
 }
 
 function loginUser(req: Request, res: Response) {

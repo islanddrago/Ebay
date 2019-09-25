@@ -2,22 +2,29 @@ import { Injectable } from '@angular/core';
 import createAuth0Client from '@auth0/auth0-spa-js';
 import Auth0Client from '@auth0/auth0-spa-js/dist/typings/Auth0Client';
 import { from, of, Observable, BehaviorSubject, combineLatest, throwError } from 'rxjs';
-import { tap, catchError, concatMap, shareReplay } from 'rxjs/operators';
+import { tap, catchError, concatMap, shareReplay, map, flatMap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  token$ = new BehaviorSubject<string>('');
   // Create an observable of Auth0 instance of client
   auth0Client$ = (from(
     createAuth0Client({
       domain: "dev-ebay.auth0.com",
       client_id: "0FA3dvWV4I07VTid3BqJUTo49nM6rWIH",
-      redirect_uri: `${window.location.origin}/callback`
+      redirect_uri: `${window.location.origin}/callback`,
+      scope: 'read:users read:user_idp_tokens read:current_user',
+      audience: 'https://dev-ebay.auth0.com/api/v2/',
     })
   ) as Observable<Auth0Client>).pipe(
     shareReplay(1), // Every subscription receives the same shared value
+    map((client: Auth0Client) => {
+      client.getTokenSilently().then((token) => this.token$.next(token)); // { audience: 'https://api.eventbay.org' } as GetTokenSilentlyOptions
+      return client;
+    }),
     catchError(err => throwError(err))
   );
   // Define observables for SDK methods that return promises by default
@@ -118,5 +125,4 @@ export class AuthService {
       });
     });
   }
-
 }

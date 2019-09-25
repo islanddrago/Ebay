@@ -5,9 +5,20 @@
   ],
   "jsRules": {},
   "rules": {
-    "trailing-comma": [true],
-    "no-console": [false],
-    "interface-name": [false]
+    "trailing-comma": [
+      true
+    ],
+    "no-console": [
+      false
+    ],
+    "interface-name": [
+      false
+    ],
+    "variable-name": [
+      true,
+      "allow-snake-case",
+      "allow-pascal-case"
+    ]
   },
   "rulesDirectory": []
 }
