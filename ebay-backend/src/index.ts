@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import jwt from "express-jwt";
 import jwks from "jwks-rsa";
 import fetch from "node-fetch";
+import EventController from "./controllers/event/event.controller";
 import UserController from "./controllers/user/user.controller";
 
 /**
@@ -32,6 +33,7 @@ const jwtCheck = jwt({
  * configure middleware to check for a token and apply user data to the request object
  */
 function authenticate(req: Request, res: Response, next: any) {
+  console.log("request: ", req);
   // make sure user ID was added to headers
   if (!req.headers.userid) {
     return res.status(400).json({ error: "Missing userID" });
@@ -81,11 +83,13 @@ function authenticate(req: Request, res: Response, next: any) {
 }
 
 // middleware
+app.use(express.json());
 app.use(jwtCheck);
 app.use(authenticate);
 
 // use controllers to manage different endpoints
 app.use("/user", UserController);
+app.use("/event", EventController);
 
 // start the server
 app.listen(port, () => console.log(`Server started on port ${port}`));
