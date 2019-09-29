@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'home',
+    selector: 'upcomingevents',
     templateUrl: './upcomingevents.component.html',
     styleUrls: ['./upcomingevents.component.scss']
   })
