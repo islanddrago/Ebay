@@ -6,13 +6,16 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { CallbackComponent } from './callback/callback.component';
-import { MatButtonModule } from '@angular/material/button'; 
+import { MatButtonModule } from '@angular/material/button';
+import { UpcomingEventsComponent } from './upcoming-events/upcoming-events.component'; 
+
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    CallbackComponent
+    CallbackComponent,
+    UpcomingEventsComponent,
   ],
   imports: [
     BrowserModule,
