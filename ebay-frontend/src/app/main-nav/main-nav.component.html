@@ -11,8 +11,8 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <button
+    <mat-toolbar class="nav" color="primary">
+    <button
         type="button"
         aria-label="Toggle sidenav"
         mat-icon-button
@@ -20,7 +20,9 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <img class="center"src="assets/logo.PNG" width="86"  >
+      <span class="center">
+      <img src="assets/logo.PNG" height= 56  >
+    </span>
     </mat-toolbar>
     <!-- Add Content Here -->
   </mat-sidenav-content>

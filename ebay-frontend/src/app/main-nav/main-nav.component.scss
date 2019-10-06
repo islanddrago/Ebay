@@ -5,14 +5,18 @@
 .sidenav {
   width: 200px;
 }
-
-.sidenav .mat-toolbar {
-  background: inherit;
+.nav{
+  display: flex;
+  flex-direction: row;
 }
 
-.mat-toolbar.mat-primary {
-  position: sticky;
+mat-toolbar.mat-primary {
+ position: sticky;
   top: 0;
   z-index: 1;
 }
+
+
+
+
 
