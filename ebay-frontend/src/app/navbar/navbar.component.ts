@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/services/auth.service';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { UiService } from 'src/services/ui.service';
 
 @Component({
   selector: 'navbar',
@@ -10,17 +8,15 @@ import { map, shareReplay } from 'rxjs/operators';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  isHandset = false;
 
-  constructor(public auth: AuthService, private breakpointObserver: BreakpointObserver) {
-    this.breakpointObserver.observe(Breakpoints.Handset)
-      .pipe(
-        map(result => result.matches),
-        shareReplay()
-      ).subscribe((isHandset: boolean) => this.isHandset = isHandset);
-  }
+  drawerOpen = false;
+  constructor(public auth: AuthService, private uiService: UiService) { }
 
   ngOnInit() {
+    this.uiService.drawerOpen.subscribe(open => this.drawerOpen = open);
   }
 
+  toggleDrawer() {
+    this.uiService.drawerOpen.next(!this.drawerOpen);
+  }
 }
