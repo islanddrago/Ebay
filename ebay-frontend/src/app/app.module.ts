@@ -12,15 +12,24 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatListModule } from '@angular/material/list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DrawerComponent } from './drawer/drawer.component';
+import { SettingsScreenComponent } from './settings-screen/settings-screen.component';
+import { UpcomingEventsScreenComponent } from './upcoming-events-screen/upcoming-events-screen.component';
+import { PastEventsScreenComponent } from './past-events-screen/past-events-screen.component';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HomeComponent,
     CallbackComponent,
+    DrawerComponent,
+    SettingsScreenComponent,
+    UpcomingEventsScreenComponent,
+    PastEventsScreenComponent,
   ],
   imports: [
     BrowserModule,
+    MatListModule,
     MatToolbarModule,
     AppRoutingModule,
     MatButtonModule,
@@ -29,6 +38,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
     LayoutModule,
     MatListModule,
+    MatSidenavModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
