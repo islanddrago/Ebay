@@ -16,6 +16,8 @@ import { DrawerComponent } from './drawer/drawer.component';
 import { SettingsScreenComponent } from './settings-screen/settings-screen.component';
 import { UpcomingEventsScreenComponent } from './upcoming-events-screen/upcoming-events-screen.component';
 import { PastEventsScreenComponent } from './past-events-screen/past-events-screen.component';
+import {MatCardModule} from '@angular/material/card';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +41,7 @@ import { PastEventsScreenComponent } from './past-events-screen/past-events-scre
     LayoutModule,
     MatListModule,
     MatSidenavModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
