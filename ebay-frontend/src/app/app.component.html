@@ -1,5 +1,10 @@
-<navbar></navbar>
-<pre>{{ profile | json }}</pre>
-<pre>{{ user | json }}</pre>
-<pre>{{ token }}</pre>
-<router-outlet></router-outlet>
+<mat-drawer-container class="drawer-container">
+  <mat-drawer [opened]="drawerOpen" (openedChange)="uiService.setDrawerOpen($event)" class="mat-elevation-z2 drawer">
+    <drawer></drawer>
+  </mat-drawer>
+  <mat-drawer-content>
+    <navbar></navbar>
+    <pre>{{ profile | json }}</pre>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

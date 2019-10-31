@@ -1,0 +1,12 @@
+:host {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.drawer-container {
+  flex: 1;
+}
+.drawer {
+  width: 275px;
+}

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/services/auth.service';
+import { UiService } from 'src/services/ui.service';
 
 @Component({
   selector: 'navbar',
@@ -8,9 +9,14 @@ import { AuthService } from 'src/services/auth.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(public auth: AuthService) { }
+  drawerOpen = false;
+  constructor(public auth: AuthService, private uiService: UiService) { }
 
   ngOnInit() {
+    this.uiService.drawerOpen.subscribe(open => this.drawerOpen = open);
   }
 
+  toggleDrawer() {
+    this.uiService.drawerOpen.next(!this.drawerOpen);
+  }
 }

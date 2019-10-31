@@ -1,0 +1,21 @@
+<div class="profile">
+  <div class="overlay darken"></div>
+  <div class="overlay">
+    <div class="profile-content">
+      <div class="mat-elevation-z2 profile-picture">
+        <img src="assets/beff-jezos.jpg" />
+      </div>
+      <h3 class="name">Beff Jezos</h3>
+    </div>
+  </div>
+</div>
+<mat-nav-list class="links">
+  <a mat-list-item class="link" *ngFor="let link of links" (click)="navigate(link.url)" [ngClass]="{ 'active': router.url === link.url }">
+    <i class="{{link.icon}}"></i>
+    <p>{{ link.text }}</p>
+  </a>
+  <a mat-list-item class="link" style="color: darkred;" (click)="logout()">
+    <i class="lni-exit"></i>
+    <p>Logout</p>
+  </a>
+</mat-nav-list>
