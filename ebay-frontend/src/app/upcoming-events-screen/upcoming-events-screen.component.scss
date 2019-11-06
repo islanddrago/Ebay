@@ -4,4 +4,34 @@
 .upcoming-header-image {
   background-image: url(https://avatars1.githubusercontent.com/u/14041091?s=460&v=4);
   background-size: cover;
+
 }
+
+.upcoming-header-image:hover {
+  box-shadow: 0 6px 10px 0 #668;
+  transform: scale(1.0);
+}
+
+.createButton {
+  width: 50px;
+  height: 50px;
+  background-color: #37A1B1;
+  border-radius: 50%;
+  box-shadow: 0 6px 10px 0 rgb(253, 253, 255);
+  transition: all 0.1s ease-in-out;
+
+  text-align: center;
+  line-height: 45px;
+  font-size: 50px;
+  color: white;
+
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+}
+
+.createButton:hover {
+  box-shadow: 0 7px 15px 0 #668;
+  transform: scale(1.0);
+}
+
