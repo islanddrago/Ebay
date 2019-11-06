@@ -14,6 +14,10 @@
     <i class="{{link.icon}}"></i>
     <p>{{ link.text }}</p>
   </a>
+  <a *ngIf="uiService.installButtonPrompt | async" mat-list-item class="link" (click)="uiService.installButtonPrompt.value.prompt()">
+    <i class="lni-cloud-download"></i>
+    <p>Install</p>
+  </a>
   <a mat-list-item class="link" style="color: darkred;" (click)="logout()">
     <i class="lni-exit"></i>
     <p>Logout</p>
