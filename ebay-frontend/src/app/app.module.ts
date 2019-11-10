@@ -17,6 +17,8 @@ import { SettingsScreenComponent } from './settings-screen/settings-screen.compo
 import { UpcomingEventsScreenComponent } from './upcoming-events-screen/upcoming-events-screen.component';
 import { PastEventsScreenComponent } from './past-events-screen/past-events-screen.component';
 import {MatCardModule} from '@angular/material/card';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 
 @NgModule({
@@ -43,7 +45,8 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     LayoutModule,
     MatListModule,
     MatSidenavModule,
-    MatCardModule
+    MatCardModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]

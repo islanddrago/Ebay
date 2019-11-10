@@ -6,8 +6,14 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class UiService {
   drawerOpen = new BehaviorSubject<boolean>(false);
+  installButtonPrompt = new BehaviorSubject<any>(undefined);
 
-  constructor() { }
+  constructor() {
+    // catch beforeinstallprompt event to determine if a install button should be present
+    window.addEventListener('beforeinstallprompt', (event) => {
+      this.installButtonPrompt.next(event);
+    });
+  }
 
   setDrawerOpen(open: boolean) {
     this.drawerOpen.next(open);
