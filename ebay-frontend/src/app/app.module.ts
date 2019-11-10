@@ -17,6 +17,7 @@ import { SettingsScreenComponent } from './settings-screen/settings-screen.compo
 import { UpcomingEventsScreenComponent } from './upcoming-events-screen/upcoming-events-screen.component';
 import { PastEventsScreenComponent } from './past-events-screen/past-events-screen.component';
 import {MatCardModule} from '@angular/material/card';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import {MatCardModule} from '@angular/material/card';
     SettingsScreenComponent,
     UpcomingEventsScreenComponent,
     PastEventsScreenComponent,
+    LandingPageComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,90 @@
+:host {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #37A1B1;
+}
+
+.land{
+    display: flex;
+    flex-direction: row;
+   
+  }
+  .lands{
+    flex: 1;
+  }
+
+
+.logo {
+  width: 100%; 
+  height: auto; 
+  max-height: 300px;
+  max-width: 300px;
+  }
+  .font{
+    color: #FFFFFF;
+    font-size: 40pt;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    text-shadow: 2px 1px 1px black;
+  }
+
+  .button{
+    flex:1;
+    background-color: #37A1B1;
+    color: #FFFFFF;
+     flex: 1;
+    border: none;
+    font-size: 16px;
+    
+  }
+  .button2{
+    flex: 2;
+    color: #FFFFFF;
+    background-color: #37A1B1;
+    border: none;
+    font-size: 16px;
+    
+  }
+
+  .spacer {
+    width: 20px;
+    
+  }
+ 
+  .phone{
+    width:100%;
+    height:auto;
+   
+    max-width: 500px;
+    max-height: 500px;
+  }
+.max{
+  max-width: 500px;
+  max-height: 500px;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.image{
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 1;
+
+}
+.flexing{
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  flex-direction: row;
+  height: 100%;
+}
+.center{
+  display: flex;
+  flex-flow: column;
+  max-width: 750px;
+  padding: 1rem 1rem 0 1rem ;
+}
