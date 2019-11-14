@@ -19,6 +19,7 @@ import { PastEventsScreenComponent } from './past-events-screen/past-events-scre
 import {MatCardModule} from '@angular/material/card';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { environment } from '../environments/environment';
     SettingsScreenComponent,
     UpcomingEventsScreenComponent,
     PastEventsScreenComponent,
+    LandingPageComponent,
   ],
   imports: [
     BrowserModule,
