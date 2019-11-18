@@ -16,7 +16,8 @@ import { DrawerComponent } from './drawer/drawer.component';
 import { SettingsScreenComponent } from './settings-screen/settings-screen.component';
 import { UpcomingEventsScreenComponent } from './upcoming-events-screen/upcoming-events-screen.component';
 import { PastEventsScreenComponent } from './past-events-screen/past-events-screen.component';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { LandingPageComponent } from './landing-page/landing-page.component';
@@ -46,6 +47,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     MatListModule,
     MatSidenavModule,
     MatCardModule,
+    MatProgressSpinnerModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],

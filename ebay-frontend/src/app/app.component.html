@@ -1,2 +1,9 @@
-
-<landing-page></landing-page>
+<mat-drawer-container class="drawer-container">
+  <mat-drawer [opened]="drawerOpen" (openedChange)="uiService.setDrawerOpen($event)" class="mat-elevation-z2 drawer">
+    <drawer></drawer>
+  </mat-drawer>
+  <mat-drawer-content class="drawer-content">
+    <navbar></navbar>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

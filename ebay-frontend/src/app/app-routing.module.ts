@@ -5,10 +5,12 @@ import { SettingsScreenComponent } from './settings-screen/settings-screen.compo
 import { UpcomingEventsScreenComponent } from './upcoming-events-screen/upcoming-events-screen.component';
 import { PastEventsScreenComponent } from './past-events-screen/past-events-screen.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { HomeComponent } from './home/home.component';
 
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent, pathMatch: 'full' },
+  { path: 'home', component: HomeComponent, pathMatch: 'full' },
   { path: 'upcoming-events', component: UpcomingEventsScreenComponent, pathMatch: 'full' },
   { path: 'past-events', component: PastEventsScreenComponent, pathMatch: 'full' },
   { path: 'settings', component: SettingsScreenComponent, pathMatch: 'full' },

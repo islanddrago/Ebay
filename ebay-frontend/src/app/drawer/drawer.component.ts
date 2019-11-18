@@ -10,6 +10,7 @@ import { AuthService } from 'src/services/auth.service';
 })
 export class DrawerComponent implements OnInit {
   drawerOpen = false;
+  profile: any;
   links = [
     {
       icon: 'lni-home',
@@ -37,6 +38,7 @@ export class DrawerComponent implements OnInit {
         this.uiService.drawerOpen.next(false);
       }
     });
+    this.authService.userProfile$.subscribe(profile => this.profile = profile);
   }
 
   navigate(path: string) {

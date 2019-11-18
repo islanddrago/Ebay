@@ -1,11 +1,11 @@
-<div class="profile">
+<div *ngIf="!!profile" class="profile">
   <div class="overlay darken"></div>
   <div class="overlay">
     <div class="profile-content">
       <div class="mat-elevation-z2 profile-picture">
-        <img src="assets/beff-jezos.jpg" />
+        <img [src]="profile.picture" />
       </div>
-      <h3 class="name">Beff Jezos</h3>
+      <h3 class="name">{{ profile.name }}</h3>
     </div>
   </div>
 </div>

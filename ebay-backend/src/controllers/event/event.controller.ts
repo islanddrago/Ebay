@@ -9,7 +9,6 @@ router.post("/", createEvent);
 
 export function createEvent(req: Request, res: Response) {
   const user = req.user as User;
-  console.log("user: ", req.body, " user2: ", user);
   EventService.createEvent(user, req.body as Event)
     .then((event: Event) => {
       res.status(200).json(event);
