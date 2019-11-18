@@ -76,7 +76,7 @@ export class AuthService {
     });
   }
 
-  login(redirectPath: string = '/') {
+  login(redirectPath: string = '/upcoming-events') {
     // A desired redirect path can be passed to login method
     // (e.g., from a route guard)
     // Ensure Auth0 client instance exists
@@ -98,6 +98,7 @@ export class AuthService {
       tap(cbRes => {
         // Get and set target redirect route from callback results
         targetRoute = cbRes.appState && cbRes.appState.target ? cbRes.appState.target : '/';
+        console.log('targetRoute: ', targetRoute);
       }),
       concatMap(() => {
         // Redirect callback complete; get user and login status
