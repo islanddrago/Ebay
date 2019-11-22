@@ -1,12 +1,22 @@
-<mat-card class="upcoming-card">
-  <mat-card-header>
-    <div mat-card-avatar class="upcoming-header-image"></div>
-    <mat-card-title>Volleyball</mat-card-title>
-    <mat-card-subtitle>Hosted By: Brayden</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <p> 123 Main Street </p>
-  </mat-card-content>
-</mat-card>
+      <mat-card (click)="doStuff()" class="upcoming-card">
+          <div class="left">
+          <mat-card-header>
+            <div mat-card-avatar class="upcoming-header-image"></div>
+            <mat-card-title>Volleyball</mat-card-title>
+            <mat-card-subtitle>Hosted By: Brayden</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>123 Main Street</p>
+          </mat-card-content>
+          </div>
+          <div class="right">
+            Today
+          </div>
+        </mat-card>
 
-<div class="createButton"> + </div>
+        
+  
+      
+  
+
+<button mat-fab class="createEventButton"> + </button>

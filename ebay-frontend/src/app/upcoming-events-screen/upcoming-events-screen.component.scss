@@ -1,4 +1,18 @@
 .upcoming-card {
+        background-color: #FFFFFF;
+        display: flex;
+        justify-content: space-between;
+       
+
+}
+.left {
+  background: white;
+}
+.right {
+  background: white;
+  color: gray;
+  line-height: 100px;
+ 
 }
 
 .upcoming-header-image {
@@ -7,22 +21,25 @@
 
 }
 
-.upcoming-header-image:hover {
+
+.upcoming-card:hover {
   box-shadow: 0 6px 10px 0 #668;
   transform: scale(1.0);
 }
 
-.createButton {
-  width: 50px;
-  height: 50px;
+
+.createEventButton {
+  
   background-color: #37A1B1;
   border-radius: 50%;
   box-shadow: 0 6px 10px 0 rgb(253, 253, 255);
   transition: all 0.1s ease-in-out;
 
   text-align: center;
-  line-height: 45px;
-  font-size: 50px;
+  vertical-align: middle;
+  margin: auto;
+  line-height: 50px;
+  font-size: 40px;
   color: white;
 
   position: fixed;
@@ -30,8 +47,11 @@
   bottom: 50px;
 }
 
-.createButton:hover {
+.createEventButton:hover {
   box-shadow: 0 7px 15px 0 #668;
   transform: scale(1.0);
 }
+
+
+
 
