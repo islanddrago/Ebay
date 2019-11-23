@@ -57,18 +57,26 @@ export function authenticate(req: Request, res: Response, next: any) {
       },
       method: "GET",
     }))
-    .then((resp) => resp.json())
-    .then((user) => createUserData(user))
-    .then((response) => {
-      if (res.statusCode === 200) {
-        req.user = response;
-        return next();
-      } else {
-        return Promise.reject(response);
+    .then((resp) => {
+      if (resp.status !== 200) {
+        return Promise.reject(resp);
       }
+      return resp.json();
+    })
+    .then(async (user) => await createUserData(user))
+    .then((response) => {
+      req.user = response;
+      return next();
     })
     .catch((err: any) => {
-      res.status(400).json({ err });
+      res.status(400).json({
+        error: {
+          error: err.error,
+          errorCode: err.errorCode,
+          message: err.message,
+          statusCode: err.statusCode,
+        },
+      });
     });
 }
 

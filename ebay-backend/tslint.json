@@ -18,6 +18,9 @@
       true,
       "allow-snake-case",
       "allow-pascal-case"
+    ],
+    "max-classes-per-file": [
+      false
     ]
   },
   "rulesDirectory": []

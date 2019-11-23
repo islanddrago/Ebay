@@ -1,6 +1,7 @@
 import express from "express";
 
 import { authenticate, jwtCheck } from "./middleware/authentication.middleware";
+import { reviveBody } from "./middleware/json.middleware";
 
 import EventController from "./controllers/event/event.controller";
 import UserController from "./controllers/user/user.controller";
@@ -21,6 +22,7 @@ const port = process.env.PORT || 6969;
 app.use(express.json());
 app.use(jwtCheck);
 app.use(authenticate);
+app.use(reviveBody);
 
 // use controllers to manage different endpoints
 app.use("/user", UserController);
