@@ -19,5 +19,8 @@
   ],
   "files": [
     "src/overrides/request.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
   ]
 }
