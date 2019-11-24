@@ -7,7 +7,6 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { CallbackComponent } from './callback/callback.component';
 import { MatButtonModule } from '@angular/material/button';
-import { UpcomingEventsComponent } from './upcoming-events/upcoming-events.component'; 
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -25,7 +24,6 @@ import {MatCardModule} from '@angular/material/card';
     NavbarComponent,
     HomeComponent,
     CallbackComponent,
-    UpcomingEventsComponent,
     DrawerComponent,
     SettingsScreenComponent,
     UpcomingEventsScreenComponent,
