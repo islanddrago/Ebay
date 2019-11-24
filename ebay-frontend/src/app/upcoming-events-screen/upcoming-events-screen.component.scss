@@ -6,12 +6,12 @@
 
 }
 .left {
-  background: white;
+  
 }
 .right {
-  background: white;
   color: gray;
-  line-height: 100px;
+  display: flex;
+  align-items: center;
  
 }
 
@@ -22,35 +22,16 @@
 }
 
 
-.upcoming-card:hover {
-  box-shadow: 0 6px 10px 0 #668;
-  transform: scale(1.0);
-}
-
 
 .createEventButton {
   
   background-color: #37A1B1;
-  border-radius: 50%;
-  box-shadow: 0 6px 10px 0 rgb(253, 253, 255);
-  transition: all 0.1s ease-in-out;
-
-  text-align: center;
-  vertical-align: middle;
-  margin: auto;
-  line-height: 50px;
-  font-size: 40px;
-  color: white;
-
   position: fixed;
   right: 50px;
   bottom: 50px;
 }
 
-.createEventButton:hover {
-  box-shadow: 0 7px 15px 0 #668;
-  transform: scale(1.0);
-}
+
 
 
 
