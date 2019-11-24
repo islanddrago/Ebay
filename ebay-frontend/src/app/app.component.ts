@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/services/auth.service';
 import { UiService } from 'src/services/ui.service';
+
 /**
  * Entry component for Angular application
  * Tutorials followed:
