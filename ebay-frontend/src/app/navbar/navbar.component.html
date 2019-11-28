@@ -1,11 +1,7 @@
-<mat-toolbar color ="primary">
-  <span>My Application</span>
-
+<mat-toolbar *ngIf="activeRoute !== '/'" class="nav" color="primary">
+    <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="toggleDrawer()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button>
+    <img src="assets/logo.PNG" class="logo" />
+    <span class="spacer"></span>
 </mat-toolbar>
-<header>
-    <button (click)="auth.login()" *ngIf="!auth.loggedIn">login</button>
-    <button (click)="auth.logout()" *ngIf="auth.loggedIn">logout</button>
-    <a routerLink="/eventdetail"><button>event detail page</button></a>
-</header>
-
- 

@@ -1,0 +1,18 @@
+
+:host {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.drawer-container {
+  flex: 1;
+}
+.drawer {
+  width: 275px;
+}
+.drawer-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}

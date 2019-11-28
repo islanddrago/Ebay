@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/services/auth.service';
+import { UiService } from 'src/services/ui.service';
+
 /**
  * Entry component for Angular application
  * Tutorials followed:
@@ -15,7 +17,8 @@ export class AppComponent implements OnInit {
   profile: any;
   user: any;
   token: string;
-  constructor(private authService: AuthService) { }
+  drawerOpen = false;
+  constructor(private authService: AuthService, public uiService: UiService) {}
 
   ngOnInit() {
     this.authService.localAuthSetup();
@@ -25,5 +28,7 @@ export class AppComponent implements OnInit {
     });
     this.authService.getUser$().subscribe((user) => this.user = user);
     this.authService.token$.subscribe((token) => this.token = token);
+
+    this.uiService.drawerOpen.subscribe(open => this.drawerOpen = open);
   }
 }

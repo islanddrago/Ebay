@@ -8,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class UpcomingEventsScreenComponent implements OnInit {
 
   constructor() { }
+  doStuff(){
+    console.log('Hello');
+  }
 
   ngOnInit() {
   }
