@@ -1,0 +1,25 @@
+<div *ngIf="!!profile" class="profile">
+  <div class="overlay darken"></div>
+  <div class="overlay">
+    <div class="profile-content">
+      <div class="mat-elevation-z2 profile-picture">
+        <img [src]="profile.picture" />
+      </div>
+      <h3 class="name">{{ profile.name }}</h3>
+    </div>
+  </div>
+</div>
+<mat-nav-list class="links">
+  <a mat-list-item class="link" *ngFor="let link of links" (click)="navigate(link.url)" [ngClass]="{ 'active': router.url === link.url }">
+    <i class="{{link.icon}}"></i>
+    <p>{{ link.text }}</p>
+  </a>
+  <a *ngIf="uiService.installButtonPrompt | async" mat-list-item class="link" (click)="uiService.installButtonPrompt.value.prompt()">
+    <i class="lni-cloud-download"></i>
+    <p>Install</p>
+  </a>
+  <a mat-list-item class="link" style="color: darkred;" (click)="logout()">
+    <i class="lni-exit"></i>
+    <p>Logout</p>
+  </a>
+</mat-nav-list>

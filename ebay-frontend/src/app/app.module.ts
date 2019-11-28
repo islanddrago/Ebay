@@ -8,6 +8,9 @@ import { HomeComponent } from './home/home.component';
 import { CallbackComponent } from './callback/callback.component';
 import { MatButtonModule } from '@angular/material/button';
 import { EventDetailPageComponent } from './event-detail-page/event-detail-page.component'; 
+import {MatListModule} from '@angular/material/list';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +24,8 @@ import { EventDetailPageComponent } from './event-detail-page/event-detail-page.
     MatToolbarModule,
     AppRoutingModule,
     MatButtonModule,
+    MatListModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

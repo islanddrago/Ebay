@@ -1,6 +1,7 @@
 #dateInfo {
     display: flex;
     background-color: #37A1B1;
+    padding-left: 10px;
 }
 
 #dateInfo > h2 {
@@ -8,45 +9,68 @@
     color: white
 }
 
+#bodyBlock {
+    padding: 10px 15px 0px 15px;
+}
+
 #infoBlock {
     display: flex;
+    align-items: center;
+    height: auto;
 }
 
 #eventInfo {
-    display: flex;
-    flex-direction: column;
-    margin: 0px 10px;
+    display: block;
+    margin-left: 15px;
 }
 
 #hostProfileImg {
-    max-width: 20%;
-    height: auto;
+    display: block;
     object-fit: cover;
     border-radius: 40px;
-    margin: 0px 10px;
-
+    max-width: 30%;
+    height: auto;
 }
 
-h1 {
-    //font-size: 50px;
+.notBold {
+    font-weight: normal;
 }
 
-h3 {
-   // font-size: 28px;
+.rsvpImg {
+    object-fit: cover;
+    border-radius: 25px;
+    width: 75px;
+    height: 75px;
 }
 
+.rsvps .rsvp {
+    height: auto;
+    padding: 0px;
+}
 
+.rsvp {
+    display: block;
+    margin: 15px 0px;
+    margin-left: -16px;
+}
 
-/* Small devices (tablets, 768px and up) */
-@media (max-width: 768px) {
+.rsvp p {
+    padding-left: 10px;
+}
+
+#rsvpBlock h2 {
+    margin-bottom: 0px;
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (max-width: 1600px) {
 
     h1 {
-        font-size: 32px;
-        color: red;
+        font-size: 50px;
     }
 
     h3 {
-        font-size: 22px;
+        font-size: 40px;
     }
 }
 
@@ -54,22 +78,30 @@ h3 {
 @media (max-width: 992px) {
 
     h1 {
-        font-size: 48px;
+        font-size: 40px;
     }
 
     h3 {
-        font-size: 28px;
+        font-size: 30px;
+    }
+
+    #hostProfileImg {
+        border-radius: 30px;
     }
 }
 
-/* Large devices (large desktops, 1200px and up) */
-@media (max-width: 1200px) {
+/* Small devices (tablets, 768px and up) */
+@media (max-width: 768px) {
 
     h1 {
-        font-size: 48px;
+        font-size: 30px;
     }
 
     h3 {
-        font-size: 28px;
+        font-size: 20px;
+    }
+
+    #hostProfileImg {
+        border-radius: 20px;
     }
 }

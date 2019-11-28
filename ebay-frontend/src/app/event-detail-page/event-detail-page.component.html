@@ -1,23 +1,31 @@
 <div>
     <div id="dateInfo">
         <h2>September 17th</h2>
-        <h2>2:00 PM</h2>
+        <h2 class="notBold">2:00 PM</h2>
     </div>
-    <div id="infoBlock">
-        <img id="hostProfileImg" src="assets/profile.png">
-        <div id="eventInfo">
-            <h1>Volleyball</h1>
-            <h3>Hosted by: <b>Gabriel</b></h3>
-            <h3>2:00 PM - 4:00 PM</h3>
+    <div id="bodyBlock">
+        <div id="infoBlock">
+            <img id="hostProfileImg" src="assets/profile.png">
+            <div id="eventInfo">
+                <h1>Volleyball</h1>
+                <h3><span class="notBold">Hosted by: </span>Gabriel</h3>
+                <h3 class="notBold">2:00 PM - 4:00 PM</h3>
+            </div>
         </div>
-    </div>
-    <div id="descriptionBlock">
-        <h2><b>Description</b></h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
-        </p>
-    </div>
-    <div id="RSVPBlock">
-        <h2><b>RSVPs</b></h2>
+        <div id="descriptionBlock">
+            <h2><b>Description</b></h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+            </p>
+        </div>
+        <div id="rsvpBlock">
+            <h2>RSVPs</h2>
+            <mat-list class="rsvps">
+                <mat-list-item class="rsvp" *ngFor="let rsvp of rsvps">
+                    <img class="rsvpImg" src="{{rsvp.img}}"/>
+                    <p>{{ rsvp.name }}</p>
+                </mat-list-item>
+            </mat-list>
+        </div>
     </div>
 </div>
