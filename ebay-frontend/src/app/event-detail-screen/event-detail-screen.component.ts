@@ -15,6 +15,7 @@ export class EventDetailScreenComponent implements OnInit {
     startTime: "2:00 PM",
     endTime: "4:00 PM",
     hostName: "Gabriel",
+    hostProfileImg: "assets/laughing-boy.jpg",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
     latitude: 33.214480,
     longitude: -97.145870,

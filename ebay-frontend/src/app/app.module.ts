@@ -22,6 +22,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { EventDetailScreenComponent } from './event-detail-screen/event-detail-screen.component';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -31,10 +32,10 @@ import { EventDetailScreenComponent } from './event-detail-screen/event-detail-s
     CallbackComponent,
     DrawerComponent,
     SettingsScreenComponent,
+    EventDetailScreenComponent,
     UpcomingEventsScreenComponent,
     PastEventsScreenComponent,
     LandingPageComponent,
-    EventDetailScreenComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +51,8 @@ import { EventDetailScreenComponent } from './event-detail-screen/event-detail-s
     MatSidenavModule,
     MatCardModule,
     MatProgressSpinnerModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    AgmCoreModule.forRoot({ apiKey: 'AIzaSyDnFXUxUDF9peFDIzNsUuGkofcKUIYcuf4' })
   ],
   providers: [],
   bootstrap: [AppComponent]
