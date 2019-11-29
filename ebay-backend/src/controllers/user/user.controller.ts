@@ -7,17 +7,19 @@ const router = Router();
 
 // user routes
 router.get("/", getLoggedInUser);
-router.post("/login", loginUser);
-router.get("/details", getUser);
+router.get("/:userID", getUser);
 
-function getLoggedInUser(req: Request, res: Response) {
-  res.status(200).json(req.user);
+async function getLoggedInUser(req: Request, res: Response) {
+  // if the request gets here, the user
+  const user = await getUserByID(req.headers.userid as string);
+  res.status(200).json({ ...req.user, ...user });
 }
 
-function loginUser(req: Request, res: Response) {
-  const request = req.body as LoginRequest;
-  const response = UserService.loginUser(request);
-  res.status(200).json(response);
+/**
+ * update user details
+ */
+function updateUser(req: Request, res: Response) {
+  
 }
 
 // TODO: updates to the user are not reflected in the database

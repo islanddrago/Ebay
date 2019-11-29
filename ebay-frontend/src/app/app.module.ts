@@ -21,6 +21,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { ProfileScreenComponent } from './profile-screen/profile-screen.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     UpcomingEventsScreenComponent,
     PastEventsScreenComponent,
     LandingPageComponent,
+    ProfileScreenComponent,
   ],
   imports: [
     BrowserModule,

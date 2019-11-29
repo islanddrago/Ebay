@@ -4,6 +4,8 @@ import Auth0Client from '@auth0/auth0-spa-js/dist/typings/Auth0Client';
 import { from, of, Observable, BehaviorSubject, combineLatest, throwError } from 'rxjs';
 import { tap, catchError, concatMap, shareReplay, map, flatMap } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { User } from '../models/user.model';
+import { GetUserDetailsRequest } from 'src/models/request.model';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +45,8 @@ export class AuthService {
   userProfile$ = this.userProfileSubject$.asObservable();
   // Create a local property for login status
   loggedIn: boolean = null;
+
+  user: User;
 
   constructor(private router: Router) { }
 
@@ -125,5 +129,10 @@ export class AuthService {
         returnTo: `${window.location.origin}`
       });
     });
+  }
+
+  fetchLoggedInUserDetails() {
+    const request = new GetUserDetailsRequest(this.userProfileSubject$.value);
+    
   }
 }
