@@ -1,0 +1,120 @@
+agm-map {
+    height: 250px;
+    width: 100%;
+}
+
+#name {
+    margin-left: 5px;
+}
+
+#dateInfo {
+    display: flex;
+    background-color: #37A1B1;
+    padding: 10px;
+}
+
+#dateInfo > h2 {
+    margin: 5px 5px;
+    color: white
+}
+
+#bodyBlock {
+    padding: 10px 15px 0px 15px;
+}
+
+#infoBlock {
+    display: flex;
+    align-items: center;
+    height: auto;
+}
+
+#eventInfo {
+    display: block;
+    margin-left: 15px;
+}
+
+#hostProfileImg {
+    display: block;
+    object-fit: cover;
+    border-radius: 40px;
+    max-width: 30%;
+    height: auto;
+}
+
+.notBold {
+    font-weight: normal;
+}
+
+.bold {
+    font-weight: bolder;
+}
+
+.rsvpImg {
+    object-fit: cover;
+    border-radius: 25px;
+    width: 75px;
+    height: 75px;
+}
+
+.rsvps .rsvp {
+    height: auto;
+    padding: 0px;
+}
+
+.rsvp {
+    display: block;
+    margin: 15px 0px;
+    margin-left: -16px;
+}
+
+.rsvp p {
+    padding-left: 10px;
+}
+
+#rsvpBlock h2 {
+    margin-bottom: 0px;
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (max-width: 1600px) {
+
+    h1 {
+        font-size: 50px;
+    }
+
+    h3 {
+        font-size: 40px;
+    }
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (max-width: 992px) {
+
+    h1 {
+        font-size: 40px;
+    }
+
+    h3 {
+        font-size: 30px;
+    }
+
+    #hostProfileImg {
+        border-radius: 30px;
+    }
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+
+    h1 {
+        font-size: 30px;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+
+    #hostProfileImg {
+        border-radius: 20px;
+    }
+}

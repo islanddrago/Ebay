@@ -1,0 +1,30 @@
+<div>
+    <agm-map [latitude]='event.latitude' [longitude]='event.longitude' [mapTypeId]='mapType' [zoom]='12'></agm-map>
+    <div id="dateInfo">
+        <h2 class="bold">{{ event.date }}</h2>
+        <h2 class="notBold">{{ event.startTime }}</h2>
+    </div>
+    <div id="bodyBlock">
+        <div id="infoBlock">
+            <img id="hostProfileImg" src="assets/profile.png">
+            <div id="eventInfo">
+                <h1 class="bold">{{ event.name }}</h1>
+                <h3><span class="notBold">Hosted by:</span><span id="name" class="bold">{{ event.hostName }}</span></h3>
+                <h3 class="notBold">{{ event.startTime }} - {{ event.endTime }}</h3>
+            </div>
+        </div>
+        <div id="descriptionBlock">
+            <h2 class="bold">Description</h2>
+            <p>{{ event.description }}</p>
+        </div>
+        <div id="rsvpBlock">
+            <h2 class="bold">RSVPs</h2>
+            <mat-list class="rsvps">
+                <mat-list-item class="rsvp" *ngFor="let rsvp of event.rsvps">
+                    <img class="rsvpImg" src="{{rsvp.img}}"/>
+                    <p>{{ rsvp.name }}</p>
+                </mat-list-item>
+            </mat-list>
+        </div>
+    </div>
+</div>
