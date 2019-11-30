@@ -21,7 +21,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-import { CreateEventsScreenComponent } from './create-events-screen/create-events-screen.component';
+import { CreateEventScreenComponent } from './create-event-screen/create-event-screen.component';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
@@ -38,7 +38,7 @@ import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
     UpcomingEventsScreenComponent,
     PastEventsScreenComponent,
     LandingPageComponent,
-    CreateEventsScreenComponent,
+    CreateEventScreenComponent,
   ],
   imports: [
     BrowserModule,
