@@ -1,0 +1,17 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+  }
+  
+  .form-container > * {
+    width: 100%;
+    
+  }
+
+.form-submit-button{
+    color: #37A1B1;
+    border-radius: 100px;
+}

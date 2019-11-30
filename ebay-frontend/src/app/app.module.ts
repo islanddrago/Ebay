@@ -21,6 +21,11 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { CreateEventsScreenComponent } from './create-events-screen/create-events-screen.component';
+import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material';
+import { MatInputModule } from '@angular/material';
+import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -33,6 +38,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     UpcomingEventsScreenComponent,
     PastEventsScreenComponent,
     LandingPageComponent,
+    CreateEventsScreenComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,7 +54,12 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     MatSidenavModule,
     MatCardModule,
     MatProgressSpinnerModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
