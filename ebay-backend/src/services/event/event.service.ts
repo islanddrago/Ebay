@@ -13,6 +13,8 @@ const EventService = {
   async createEvent(user: User, createEventRequest: CreateEventRequest): Promise<Event> {
     const event = createEventRequest.event;
     event.host = user.user_id;
+    event.host_picture = user.picture;
+    event.host_name = user.given_name || user.nickname;
     return createEvent(event);
   },
 

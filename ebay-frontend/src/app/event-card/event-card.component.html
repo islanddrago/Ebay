@@ -1,0 +1,18 @@
+<mat-card class="container" (click)="showEventDetail()">
+  <div class="spinner-wrapper" *ngIf="loading">
+    <mat-spinner class="spinner"></mat-spinner>
+  </div>
+  <ng-container *ngIf="!loading && !error">
+    <div class="left">
+      <img class="img" [src]="event.host_picture" />
+      <div class="labels">
+        <div class="title">{{ event.title }}</div>
+        <div class="subtitle">Hosted by: {{ event.host_name }}</div>
+        <div class="subtitle">{{ event.location }}</div>
+      </div>
+    </div>
+    <div class="right">
+      <div class="date">{{ months[event.startDate.getMonth()] }} {{ event.startDate.getDay() }}</div>
+    </div>
+  </ng-container>
+</mat-card>

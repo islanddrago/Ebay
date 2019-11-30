@@ -7,7 +7,7 @@ import { LoginResponse } from "../../controllers/user/user.response";
  */
 
 const UserService = {
-  loginUser(loginUserRequest: LoginRequest): LoginResponse {
+  getUserDetails(loginUserRequest: LoginRequest): LoginResponse {
     return new LoginResponse("TODO: implement this");
   },
 };

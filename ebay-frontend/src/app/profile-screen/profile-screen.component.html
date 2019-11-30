@@ -1,1 +1,23 @@
-<p>profile-screen works!</p>
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<div class="container" *ngIf="!isLoading">
+  <div class="images">
+    <div class="bg-image">
+      <img [src]="profile.picture" />
+    </div>
+  </div>
+  <h1 class="name">{{ profile.given_name }} {{ profile.family_name }}</h1>
+
+  <div class="attr">
+    <div class="label">Nickname</div>
+    <div class="value">{{ profile.nickname }}</div>
+  </div>
+  <div class="attr">
+    <div class="label">Email</div>
+    <div class="value">{{ profile.email }}</div>
+  </div>
+  <div class="attr">
+    <div class="label">RSVPs</div>
+    <div class="value">{{ profile.rsvps.length }}</div>
+  </div>
+  <event-card class="event" *ngFor="let eventID of profile.rsvps" [eventID]="eventID"></event-card>
+</div>

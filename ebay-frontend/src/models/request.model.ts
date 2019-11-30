@@ -12,3 +12,13 @@ export class GetUserDetailsRequest implements BaseRequest {
     this.body = null;
   }
 }
+
+export class GetEventDetailsRequest implements BaseRequest {
+  url: string;
+  body: any;
+
+  constructor(eventID: string) {
+    this.url = `/event/${eventID}`;
+    this.body = null;
+  }
+}

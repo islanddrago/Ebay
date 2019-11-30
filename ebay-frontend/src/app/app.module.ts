@@ -22,6 +22,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { ProfileScreenComponent } from './profile-screen/profile-screen.component';
+import { HttpClientModule } from '@angular/common/http';
+import { EventCardComponent } from './event-card/event-card.component';
 
 @NgModule({
   declarations: [
@@ -35,9 +37,11 @@ import { ProfileScreenComponent } from './profile-screen/profile-screen.componen
     PastEventsScreenComponent,
     LandingPageComponent,
     ProfileScreenComponent,
+    EventCardComponent,
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     MatListModule,
     MatToolbarModule,
     AppRoutingModule,

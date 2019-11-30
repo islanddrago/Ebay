@@ -5,7 +5,6 @@ import { from, of, Observable, BehaviorSubject, combineLatest, throwError } from
 import { tap, catchError, concatMap, shareReplay, map, flatMap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { User } from '../models/user.model';
-import { GetUserDetailsRequest } from 'src/models/request.model';
 
 @Injectable({
   providedIn: 'root'
@@ -41,7 +40,7 @@ export class AuthService {
     concatMap((client: Auth0Client) => from(client.handleRedirectCallback()))
   );
   // Create subject and public observable of user profile data
-  private userProfileSubject$ = new BehaviorSubject<any>(null);
+  userProfileSubject$ = new BehaviorSubject<any>(null);
   userProfile$ = this.userProfileSubject$.asObservable();
   // Create a local property for login status
   loggedIn: boolean = null;
@@ -129,10 +128,5 @@ export class AuthService {
         returnTo: `${window.location.origin}`
       });
     });
-  }
-
-  fetchLoggedInUserDetails() {
-    const request = new GetUserDetailsRequest(this.userProfileSubject$.value);
-    
   }
 }
