@@ -1,16 +1,18 @@
 import { Request, Response, Router } from "express";
+import { authenticate, jwtCheck } from "../../middleware/authentication.middleware";
 import { User } from "../../models/user.model";
 import EventService from "../../services/event/event.service";
 import { CreateEventRequest, RemoveUserFromRSVPRequest } from "./event.request";
 
 const router = Router();
 
+router.get("/upcoming-events", getUpcomingEvents);
 router.get("/:eventID", getEventByID);
-router.post("/", createEvent);
-router.post("/:eventID/rsvp", rsvpToEvent);
-router.post("/:eventID/unrsvp", unrsvpFromEvent);
-router.post("/:eventID/unrsvp-user", removeUserFromRSVP);
-router.delete("/:eventID", deleteEvent);
+router.post("/", jwtCheck, authenticate, createEvent);
+router.post("/:eventID/rsvp", jwtCheck, authenticate, rsvpToEvent);
+router.post("/:eventID/unrsvp", jwtCheck, authenticate, unrsvpFromEvent);
+router.post("/:eventID/unrsvp-user", jwtCheck, authenticate, removeUserFromRSVP);
+router.delete("/:eventID", jwtCheck, authenticate, deleteEvent);
 
 /**
  * get an event with a given event ID
@@ -27,6 +29,18 @@ async function getEventByID(req: Request, res: Response) {
     res.status(200).json({ body });
   } catch ({ message: error }) {
     console.log("err: ", error);
+    res.status(500).json({ error });
+  }
+}
+
+/**
+ * get all upcoming events in the database
+ */
+async function getUpcomingEvents(req: Request, res: Response) {
+  try {
+    const events = await EventService.getUpcomingEvents();
+    res.status(200).json({ events });
+  } catch ({ message: error }) {
     res.status(500).json({ error });
   }
 }

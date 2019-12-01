@@ -22,8 +22,6 @@ export class ProfileScreenComponent implements OnInit {
       this.identityService.loggedInUser.subscribe((user: User) => {
         const profile = this.authService.userProfileSubject$.value;
         if (!!user && !!profile) {
-          console.log('id: ', this.id);
-          console.log('user: ', user, ' profile: ', profile);
           // if the profile is the logged in user, get it from the identityService
           if (this.id === profile.sub) {
             this.profile = user;

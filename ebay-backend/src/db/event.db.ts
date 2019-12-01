@@ -13,10 +13,21 @@ export async function getEventByID(eventID: string): Promise<Event> {
         return reject(collectionError);
       }
 
-      collection.findOne({ _id: new mongo.ObjectID(eventID) }, (insertError, result) => {
+      collection.findOne({ _id: new mongo.ObjectID(eventID) }, (findError, result) => {
         client.close();
-        return !!insertError ? reject(insertError) : resolve(new Event(result));
+        return !!findError ? reject(findError) : resolve(new Event(result));
       });
+    });
+  });
+}
+
+export async function getAllEvents(): Promise<Event[]> {
+  const client = await createMongoConnection();
+  return new Promise<Event[]>((resolve, reject) => {
+    const db = client.db(DATABASE);
+    return db.collection(EVENTS_COLLECTION).find({}).toArray((findError, result) => {
+      client.close();
+      return !!findError ? reject(findError) : resolve(result.map((item) => new Event(item)));
     });
   });
 }
