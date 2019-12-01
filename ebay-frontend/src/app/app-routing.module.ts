@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'past-events', component: PastEventsScreenComponent, pathMatch: 'full' },
   { path: 'settings', component: SettingsScreenComponent, pathMatch: 'full' },
   { path: 'callback', component: CallbackComponent, pathMatch: 'full' },
-  {path: 'create-event', component: CreateEventScreenComponent, pathMatch: 'full'}
+  { path: 'create-event', component: CreateEventScreenComponent, pathMatch: 'full' },
 ];
 
 @NgModule({
