@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'profile/:id', component: ProfileScreenComponent, pathMatch: 'full' },
   { path: 'upcoming-events', component: UpcomingEventsScreenComponent, pathMatch: 'full' },
   { path: 'past-events', component: PastEventsScreenComponent, pathMatch: 'full' },
-  { path: 'event-details', component: EventDetailScreenComponent, pathMatch: 'full' },
+  { path: 'event-details/:id', component: EventDetailScreenComponent, pathMatch: 'full' },
   { path: 'settings', component: SettingsScreenComponent, pathMatch: 'full' },
   { path: 'callback', component: CallbackComponent, pathMatch: 'full' },
   { path: 'create-event', component: CreateEventScreenComponent, pathMatch: 'full' },

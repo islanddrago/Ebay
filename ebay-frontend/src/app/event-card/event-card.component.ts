@@ -30,7 +30,7 @@ export class EventCardComponent implements OnInit {
   }
 
   showEventDetail() {
-    this.router.navigate(['/event', this.eventID]);
+    this.router.navigate(['/event-details', this.eventID]);
   }
 
 }
