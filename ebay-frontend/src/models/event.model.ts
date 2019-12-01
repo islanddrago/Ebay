@@ -16,8 +16,8 @@ export class Event {
     this.host_picture = host_picture || "";
     this.title = title || "";
     this.description = description || "";
-    this.startDate = startDate || new Date();
-    this.endDate = endDate || new Date();
+    this.startDate = !!startDate ? new Date(startDate) : new Date();
+    this.endDate = !!endDate ? new Date(endDate) : new Date();
     this.location = location || "";
     this.rsvps = rsvps || [];
   }

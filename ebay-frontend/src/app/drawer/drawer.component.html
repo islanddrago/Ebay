@@ -3,7 +3,7 @@
   <div class="overlay">
     <div class="profile-content">
       <div class="mat-elevation-z2 profile-picture">
-        <img [src]="profile.picture" />
+        <img [src]="profile.picture" routerLink="/profile/{{profile.sub}}" />
       </div>
       <h3 class="name">{{ profile.name }}</h3>
     </div>

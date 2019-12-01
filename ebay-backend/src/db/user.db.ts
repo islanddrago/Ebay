@@ -36,6 +36,22 @@ export async function createUser(user: User): Promise<User> {
   });
 }
 
+export async function updateUser(user: User): Promise<User> {
+  const client = await createMongoConnection();
+  return new Promise<User>((resolve, reject) => {
+    client.db(DATABASE).collection(USERS_COLLECTION, (collectionError, collection) => {
+      if (!!collectionError) {
+        client.close();
+        return reject(collectionError);
+      }
+      collection.updateMany({ user_id: user.user_id }, { $set: { ...user } }, (updateError, result) => {
+        client.close();
+        return !!updateError ? reject(updateError) : resolve(user);
+      });
+    });
+  });
+}
+
 export async function addEventToRSVP(user: User, eventID: string): Promise<boolean> {
   const client = await createMongoConnection();
   return new Promise<boolean>((resolve, reject) => {
