@@ -23,6 +23,11 @@ import { environment } from '../environments/environment';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { EventDetailScreenComponent } from './event-detail-screen/event-detail-screen.component';
 import { AgmCoreModule } from '@agm/core';
+import { CreateEventScreenComponent } from './create-event-screen/create-event-screen.component';
+import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material';
+import { MatInputModule } from '@angular/material';
+import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -36,6 +41,7 @@ import { AgmCoreModule } from '@agm/core';
     UpcomingEventsScreenComponent,
     PastEventsScreenComponent,
     LandingPageComponent,
+    CreateEventScreenComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,7 +58,12 @@ import { AgmCoreModule } from '@agm/core';
     MatCardModule,
     MatProgressSpinnerModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    AgmCoreModule.forRoot({ apiKey: 'AIzaSyDnFXUxUDF9peFDIzNsUuGkofcKUIYcuf4' })
+    AgmCoreModule.forRoot({ apiKey: 'AIzaSyDnFXUxUDF9peFDIzNsUuGkofcKUIYcuf4' }),
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

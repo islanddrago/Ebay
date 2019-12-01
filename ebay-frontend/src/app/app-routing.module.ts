@@ -7,7 +7,7 @@ import { PastEventsScreenComponent } from './past-events-screen/past-events-scre
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { EventDetailScreenComponent } from './event-detail-screen/event-detail-screen.component';
 import { HomeComponent } from './home/home.component';
-
+import { CreateEventScreenComponent } from './create-event-screen/create-event-screen.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent, pathMatch: 'full' },
@@ -17,6 +17,7 @@ const routes: Routes = [
   { path: 'event-details', component: EventDetailScreenComponent, pathMatch: 'full' },
   { path: 'settings', component: SettingsScreenComponent, pathMatch: 'full' },
   { path: 'callback', component: CallbackComponent, pathMatch: 'full' },
+  { path: 'create-event', component: CreateEventScreenComponent, pathMatch: 'full' },
 ];
 
 @NgModule({
