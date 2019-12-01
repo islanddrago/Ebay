@@ -1,5 +1,6 @@
-import { LoginRequest } from "../../controllers/user/user.request";
-import { LoginResponse } from "../../controllers/user/user.response";
+import { UpdateUserRequest } from "../../controllers/user/user.request";
+import { updateUser } from "../../db/user.db";
+import { User } from "../../models/user.model";
 
 /**
  * user.service.ts
@@ -7,8 +8,12 @@ import { LoginResponse } from "../../controllers/user/user.response";
  */
 
 const UserService = {
-  getUserDetails(loginUserRequest: LoginRequest): LoginResponse {
-    return new LoginResponse("TODO: implement this");
+  async updateUser(user: User, updateRequest: UpdateUserRequest): Promise<User> {
+    if (!!(updateRequest as any).user_id) {
+      delete (updateRequest as any).user_id;
+    }
+    const newUserData = { ...user, ...updateRequest } as User;
+    return updateUser(newUserData);
   },
 };
 export default UserService;
