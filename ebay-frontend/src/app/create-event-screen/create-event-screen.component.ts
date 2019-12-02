@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-create-event-screen',
@@ -12,4 +14,16 @@ export class CreateEventScreenComponent implements OnInit {
   ngOnInit() {
   }
 
+}
+
+export class NameEditorComponent {
+  name = new FormControl('');
+}
+
+export class LocationEditorComponent {
+  location = new FormControl('');
+}
+
+export class DateEditorComponent {
+  date = new FormControl('');
 }

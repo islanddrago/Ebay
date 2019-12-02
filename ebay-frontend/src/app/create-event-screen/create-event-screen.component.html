@@ -1,18 +1,18 @@
 <div class="form-container">
+    
     <mat-form-field>
-        <input matInput placeholder="Event Name">
+        <input matInput placeholder="Event Name" name="first" ngModel required #first="ngModel">
     </mat-form-field>
 
     <mat-form-field>
-        <input matInput placeholder="Location">
+        <input matInput placeholder="Location" location="second" ngModel required #second="ngModel">
     </mat-form-field>
 
     <mat-form-field>
-        <input matInput [matDatepicker]="picker" placeholder="Select a Date">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
+        <input matInput type="datetime-local" placeholder="Select a Date" location="third" ngModel required #third="ngModel">
     </mat-form-field>
-
+    
 </div>
 
 <button mat-raised-button color="primary" routerLink="/upcoming-events" class="form-submit-button">Submit</button> 
+

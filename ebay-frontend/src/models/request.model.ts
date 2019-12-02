@@ -22,3 +22,4 @@ export class GetEventDetailsRequest implements BaseRequest {
     this.body = null;
   }
 }
+
