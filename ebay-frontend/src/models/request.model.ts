@@ -61,7 +61,7 @@ export class CreateEventRequest implements BaseRequest {
         description,
         location,
         startDate,
-        endDate,
+        endDate, 
       }
     };
   }
