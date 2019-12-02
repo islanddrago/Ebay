@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import {NgForm} from '@angular/forms';
+import { EventService } from '../../services/event.service';
+import { Event } from 'src/models/event.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-event-screen',
@@ -9,21 +10,26 @@ import {NgForm} from '@angular/forms';
 })
 export class CreateEventScreenComponent implements OnInit {
 
-  constructor() { }
+  title: string;
+  description: string;
+  location: string;
+  startDate: Date;
+  endDate: Date;
+
+  constructor(private eventService: EventService, private router: Router) { }
 
   ngOnInit() {
   }
 
-}
-
-export class NameEditorComponent {
-  name = new FormControl('');
-}
-
-export class LocationEditorComponent {
-  location = new FormControl('');
-}
-
-export class DateEditorComponent {
-  date = new FormControl('');
+  createEvent() {
+    this.eventService.createEvent(
+      this.title,
+      this.description,
+      this.location,
+      this.startDate.toISOString(),
+      this.endDate.toISOString())
+      .subscribe((event: Event) => {
+        this.router.navigate(['/upcoming-events']);
+      });
+  }
 }
