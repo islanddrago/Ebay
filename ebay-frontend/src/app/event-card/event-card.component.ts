@@ -9,8 +9,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./event-card.component.scss']
 })
 export class EventCardComponent implements OnInit {
+  @Input() event: Event;
   @Input() eventID: string;
-  event: Event;
   loading = true;
   error = false;
 
@@ -19,14 +19,18 @@ export class EventCardComponent implements OnInit {
   constructor(private eventService: EventService, private router: Router) { }
 
   ngOnInit() {
-    this.eventService.getEvent(this.eventID).subscribe((event: Event) => {
-      if (!!event) {
-        this.event = new Event(event);
-      } else {
-        this.error = true;
-      }
+    if (!this.event) {
+      this.eventService.getEvent(this.eventID).subscribe((event: Event) => {
+        if (!!event) {
+          this.event = new Event(event);
+        } else {
+          this.error = true;
+        }
+        this.loading = false;
+      });
+    } else {
       this.loading = false;
-    });
+    }
   }
 
   showEventDetail() {
