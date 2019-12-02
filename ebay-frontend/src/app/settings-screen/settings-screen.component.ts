@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/services/auth.service';
 import { User } from '../../models/user.model';
 import { IdentityService } from '../../services/identity.service';
-import {NgForm} from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { SelectionModel, UniqueSelectionDispatcher } from '@angular/cdk/collections';
 @Component({
@@ -12,30 +12,25 @@ import { SelectionModel, UniqueSelectionDispatcher } from '@angular/cdk/collecti
   styleUrls: ['./settings-screen.component.scss']
 })
 export class SettingsScreenComponent implements OnInit {
-
-  id: string;
+  loading = true;
   profile: User;
 
   constructor(private route: ActivatedRoute, private authService: AuthService, private identityService: IdentityService) { }
 
   ngOnInit() {
-    
-    
     this.identityService.loggedInUser.subscribe((user: User) => {
-      const profile = this.authService.userProfileSubject$.value;
-      if (!!user && !!profile) {
+      if (!!user) {
         this.profile = user;
-        // if the profile is the logged in user, get it from the identityService
+        this.loading = false;
       }
-
     });
 
   }
-  updateProfile(){
-    this.identityService.UpdateUserDetails(this.profile.email,this.profile.given_name,this.profile.family_name,this.profile.nickname).subscribe((response)=>{
-      
+  updateProfile() {
+    this.identityService.updateUser(this.profile.email, this.profile.given_name, this.profile.family_name, this.profile.nickname).subscribe((response) => {
+
     });
   }
-  
+
 }
 

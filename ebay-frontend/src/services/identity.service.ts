@@ -4,7 +4,7 @@ import { AuthService } from './auth.service';
 import { ApiService } from './api.service';
 import { User } from '../models/user.model';
 import { BehaviorSubject } from 'rxjs';
-import {UpdateProfileRequest} from "../models/request.model";
+import { UpdateProfileRequest } from "../models/request.model";
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -35,14 +35,13 @@ export class IdentityService {
     const request = new GetUserDetailsRequest(userID);
     return this.apiService.getRequest(request);
   }
-  UpdateUserDetails(email: string,  given_name:string,family_name:string, nickname:string){
-    const request =new UpdateProfileRequest(email,given_name,family_name,nickname);
-    return this.apiService.putRequest(request).pipe(map( (response: any)=>{
-      if(!!response.user){
+  updateUser(email: string, given_name: string, family_name: string, nickname: string) {
+    const request = new UpdateProfileRequest(email, given_name, family_name, nickname);
+    return this.apiService.putRequest(request).pipe(map((response: any) => {
+      if (!!response.user) {
         return response.user;
       }
       return null;
-    } ))
-
+    }));
   }
 }
