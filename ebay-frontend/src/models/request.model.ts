@@ -22,3 +22,13 @@ export class GetEventDetailsRequest implements BaseRequest {
     this.body = null;
   }
 }
+
+export class GetUpcomingEventsRequest implements BaseRequest {
+  url: string;
+  body: any;
+
+  constructor() {
+    this.url = '/event/upcoming-events';
+    this.body = null;
+  }
+}
