@@ -12,38 +12,13 @@ import { IdentityService } from 'src/services/identity.service';
 })
 export class EventDetailScreenComponent implements OnInit {
 
-  
-
-  // event = { // Will be populated in onInit
-  //   name: "Volleyball",
-  //   date: "September 12th",
-  //   startTime: "2:00 PM",
-  //   endTime: "4:00 PM",
-  //   hostName: "Gabriel",
-  //   hostProfileImg: "assets/laughing-boy.jpg",
-  //   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-  //   latitude: 33.214480,
-  //   longitude: -97.145870,
-  //   rsvps: [
-  //     {
-  //       img: 'assets/beff-jezos.jpg',
-  //       name: 'Beff Jezos',
-  //     },
-  //     {
-  //       img: 'assets/beff-jezos.jpg',
-  //       name: 'Steph Jezos',
-  //     },
-  //     {
-  //       img: 'assets/beff-jezos.jpg',
-  //       name: 'Carl',
-  //     }
-  //   ]
-  // }
   eventID: string;
   event: Event;
   startTime: string;
   endTime: string;
-  rsvps: User[];
+  rsvps: User[] = [];
+  rsvped = false;
+  shouldRsvp = "RSVP";
   isLoading = true;
   error = false;
   mapType = 'roadmap';
@@ -51,11 +26,16 @@ export class EventDetailScreenComponent implements OnInit {
   constructor(private eventService: EventService, private route: ActivatedRoute, private identityService: IdentityService) { }
 
   ngOnInit() {
-
     this.route.params.subscribe(params => {
       this.eventID = params['id'];
       this.eventService.getEvent(this.eventID).subscribe((event: Event) => {
         if (!!event) {
+          this.identityService.fetchLoggedInUserDetails().subscribe((response: any) => {
+            if((response.user as User).rsvps.includes(this.eventID)) {
+              this.rsvped = true;
+              this.shouldRsvp = "unRSVP";
+            }
+          });
           this.event = new Event(event);
           this.startTime = this.formatTime(this.event.startDate);
           this.endTime = this.formatTime(this.event.endDate);
@@ -77,6 +57,20 @@ export class EventDetailScreenComponent implements OnInit {
     const h = (m == "PM") ? (d.getHours() - 12) : d.getHours();
     
     return h + ":" + d.getMinutes() + " " + m;
+  }
+
+  rsvpForEvent() {
+    if(!this.rsvped) { // RSVP if false
+      this.eventService.rsvpForEvent(this.eventID).subscribe((user: User) => {
+          this.rsvped = true;
+          this.shouldRsvp = "unRSVP";
+      });
+    } else { // unRSVP if true
+      this.eventService.unRsvpForEvent(this.eventID).subscribe((user: User) => {
+            this.rsvped = false;
+            this.shouldRsvp = "RSVP";
+      });
+    }
   }
 
 }

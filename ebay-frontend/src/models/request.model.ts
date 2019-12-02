@@ -33,7 +33,6 @@ export class GetUpcomingEventsRequest implements BaseRequest {
   }
 }
 
-
 export class UpdateProfileRequest implements BaseRequest{
   url: string;
   body: any;
@@ -49,6 +48,27 @@ export class UpdateProfileRequest implements BaseRequest{
     };
   }
 }
+
+export class RSVPForEventRequest implements BaseRequest {
+  url: string;
+  body: any;
+
+  constructor(eventID: string) {
+    this.url = `/event/${eventID}/rsvp`
+    this.body = null;
+  }
+}
+
+export class UnRSVPForEventRequest implements BaseRequest {
+  url: string;
+  body: any;
+
+  constructor(eventID: string) {
+    this.url = `/event/${eventID}/unrsvp`
+    this.body = null;
+  }
+}
+
 export class CreateEventRequest implements BaseRequest {
   url: string;
   body: any;
@@ -66,4 +86,3 @@ export class CreateEventRequest implements BaseRequest {
     };
   }
 }
-

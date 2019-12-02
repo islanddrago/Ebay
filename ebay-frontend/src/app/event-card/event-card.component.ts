@@ -34,7 +34,13 @@ export class EventCardComponent implements OnInit {
   }
 
   showEventDetail() {
-    this.router.navigate(['/event-details', this.eventID]);
+    console.log(this.eventID);
+    console.log(this.event._id);
+    if(!this.eventID) {
+      this.router.navigate(['event-details', this.event._id]);
+    } else {
+      this.router.navigate(['event-details', this.eventID]);
+    }
   }
 
 }

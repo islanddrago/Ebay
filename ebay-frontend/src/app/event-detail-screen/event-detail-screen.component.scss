@@ -3,6 +3,16 @@ agm-map {
     width: 100%;
 }
 
+#addressRsvpBlock {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#rsvpButton {
+    height: fit-content;
+}
+
 #name {
     margin-left: 5px;
 }
