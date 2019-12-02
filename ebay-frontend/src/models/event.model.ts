@@ -8,6 +8,8 @@ export class Event {
   public host_picture: string;
   public location: string;
   public rsvps: string[];
+  public latitude = 33.252150;
+  public longitude = -97.153620;
 
   constructor(obj: any) {
     const { host, host_picture, host_name, title, description, startDate, endDate, location, rsvps } = obj;
