@@ -14,9 +14,8 @@ const EventService = {
     const now = new Date();
     try {
       const events: Event[] = await getAllEvents();
-      return events.filter((event) => event.startDate > now);
+      return events.filter((event) => new Date(event.startDate) > now);
     } catch (error) {
-      console.log("caught: ", error);
       throw error;
     }
   },
