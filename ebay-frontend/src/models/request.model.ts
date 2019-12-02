@@ -33,6 +33,7 @@ export class GetUpcomingEventsRequest implements BaseRequest {
   }
 }
 
+
 export class UpdateProfileRequest implements BaseRequest{
   url: string;
   body: any;
@@ -48,3 +49,21 @@ export class UpdateProfileRequest implements BaseRequest{
     };
   }
 }
+export class CreateEventRequest implements BaseRequest {
+  url: string;
+  body: any;
+
+  constructor(title: string, description: string, location: string, startDate: string, endDate: string) {
+    this.url = '/event';
+    this.body = {
+      event: {
+        title,
+        description,
+        location,
+        startDate,
+        endDate,
+      }
+    };
+  }
+}
+
