@@ -1,1 +1,41 @@
-<p>settings-screen works!</p>
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<div class="container" *ngIf="!isLoading">
+  <div class="images">
+    <div class="bg-image">
+      <img [src]="profile.picture" />
+    </div>
+  </div>
+  <h1 class="name">{{ profile.given_name }} {{ profile.family_name }}</h1>
+ 
+  <div class="attr" >
+    <div class="label">Nickname</div>
+    <mat-form-field>
+        <input matInput placeholder="Nickname" [(ngModel)]="profile.nickname" required >
+    </mat-form-field>
+ <!--   <div class="value">{{ profile.nickname }}</div>--> 
+  </div>
+  <div class="attr">
+    <div class="label">Email</div>
+    <mat-form-field>
+        <input matInput placeholder="email" [(ngModel)]="profile.email" required >
+
+    </mat-form-field>
+   
+  </div>
+  <div class="attr">
+    <div class="label">First Name</div>
+    <mat-form-field>
+        <input matInput placeholder="First Name"  [(ngModel)]="profile.given_name" >
+    </mat-form-field>
+  </div>
+  <div class="attr">
+    <div class="label">First Name</div>
+    <mat-form-field>
+        <input matInput placeholder="Last Name" [(ngModel)]="profile.family_name">
+    </mat-form-field>
+ 
+  </div>
+  <button mat-raised-button color="primary"  (onClick)="updateProfile()" class="form-submit-button">Submit</button> 
+</div>
+
+

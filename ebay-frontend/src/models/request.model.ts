@@ -32,3 +32,19 @@ export class GetUpcomingEventsRequest implements BaseRequest {
     this.body = null;
   }
 }
+
+export class UpdateProfileRequest implements BaseRequest{
+  url: string;
+  body: any;
+
+  constructor(email: string, given_name:string,family_name:string, nickname:string ) {
+    this.url = '/user';
+    this.body = {
+      email,
+      name,
+      given_name,
+      family_name,
+      nickname,
+    };
+  }
+}
