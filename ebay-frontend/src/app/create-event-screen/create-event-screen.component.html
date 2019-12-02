@@ -1,18 +1,21 @@
-<div class="form-container">
-    <mat-form-field>
-        <input matInput placeholder="Event Name">
-    </mat-form-field>
-
-    <mat-form-field>
-        <input matInput placeholder="Location">
-    </mat-form-field>
-
-    <mat-form-field>
-        <input matInput [matDatepicker]="picker" placeholder="Select a Date">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-
-</div>
-
-<button mat-raised-button color="primary" routerLink="/upcoming-events" class="form-submit-button">Submit</button> 
+<pre>{{ startDate }}</pre>
+<mat-form-field>
+    <input matInput placeholder="Title" [(ngModel)]="title">
+</mat-form-field>
+<mat-form-field>
+    <input matInput placeholder="Description" [(ngModel)]="description">
+</mat-form-field>
+<mat-form-field>
+    <input matInput placeholder="Location" [(ngModel)]="location">
+</mat-form-field>
+<mat-form-field>
+    <input matInput [matDatepicker]="startPicker" placeholder="Start date" [(ngModel)]="startDate">
+    <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+    <mat-datepicker #startPicker></mat-datepicker>
+</mat-form-field>
+<mat-form-field>
+    <input matInput [matDatepicker]="endPicker" placeholder="End date" [(ngModel)]="endDate">
+    <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+    <mat-datepicker #endPicker></mat-datepicker>
+</mat-form-field>
+<button mat-raised-button color="primary" (click)="createEvent()" class="form-submit-button">Submit</button>
