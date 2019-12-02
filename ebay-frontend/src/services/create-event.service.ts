@@ -11,14 +11,5 @@ export class CreateEventService {
 
   constructor(private apiService: ApiService) { }
 
-  putEvent(eventID: string) {
-    const request = new GetEventDetailsRequest(eventID);
-    return this.apiService.putRequest(request).pipe(map((response: any) => {
-      if (!!response.body) {
-        return response.body;
-      }
-      return null;
-    }));
-  }
-
+  
 }
