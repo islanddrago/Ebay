@@ -5,7 +5,10 @@
         <h2 class="notBold">{{ startTime }}</h2>
     </div>
     <div id="bodyBlock">
-        <h1 class="bold" id="location">{{ event.location }}</h1>
+        <div id="addressRsvpBlock">
+            <h1 class="bold" id="location">{{ event.location }}</h1>
+            <button mat-raised-button id="rsvpButton" color="primary" (click)="rsvpForEvent()">{{ shouldRsvp }}</button>
+        </div>
         <div id="infoBlock">
             <img id="hostProfileImg" src="{{ event.host_picture }}">
             <div id="eventInfo">

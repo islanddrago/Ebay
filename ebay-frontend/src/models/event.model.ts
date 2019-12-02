@@ -1,4 +1,5 @@
 export class Event {
+  public _id: string;
   public title: string;
   public description: string;
   public startDate: Date;
@@ -12,7 +13,8 @@ export class Event {
   public longitude = -97.153620;
 
   constructor(obj: any) {
-    const { host, host_picture, host_name, title, description, startDate, endDate, location, rsvps } = obj;
+    const { _id, host, host_picture, host_name, title, description, startDate, endDate, location, rsvps } = obj;
+    this._id = _id || "";
     this.host = host || "";
     this.host_name = host_name || "";
     this.host_picture = host_picture || "";
