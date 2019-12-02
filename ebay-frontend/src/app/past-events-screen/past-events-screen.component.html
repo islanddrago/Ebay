@@ -1,5 +1,5 @@
 <h1>My RSVPs</h1>
-<event-card *ngFor="let eventID of profile.rsvps" [eventID]="eventID"></event-card>
+<event-card class="event-card" *ngFor="let eventID of profile.rsvps" [eventID]="eventID"></event-card>
 
 <button mat-fab color=primary routerLink="/create-event" class="createEventButton">
   <mat-icon>add</mat-icon>

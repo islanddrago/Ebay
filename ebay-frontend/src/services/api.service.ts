@@ -13,7 +13,7 @@ export class ApiService {
 
   constructor(private http: HttpClient, private authService: AuthService) {
     authService.userProfile$.subscribe(profile => this.userID = !!profile ? profile.sub : undefined);
-    this.host = isDevMode() ? 'http://localhost:6969' : 'https://api.eventbay.org';
+    this.host = isDevMode() ? 'http://localhost:6969' : 'http://3.135.227.242';
   }
 
   getRequest(request: BaseRequest) {
