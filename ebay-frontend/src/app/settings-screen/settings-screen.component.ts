@@ -32,7 +32,9 @@ export class SettingsScreenComponent implements OnInit {
 
   }
   updateProfile(){
-    this.identityService.UpdateUserDetails(this.profile.email,this.profile.given_name,this.profile.family_name,this.profile.nickname);
+    this.identityService.UpdateUserDetails(this.profile.email,this.profile.given_name,this.profile.family_name,this.profile.nickname).subscribe((response)=>{
+      
+    });
   }
   
 }

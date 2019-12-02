@@ -37,7 +37,7 @@ export class IdentityService {
   }
   UpdateUserDetails(email: string,  given_name:string,family_name:string, nickname:string){
     const request =new UpdateProfileRequest(email,given_name,family_name,nickname);
-    return this.apiService.postRequest(request).pipe(map( (response: any)=>{
+    return this.apiService.putRequest(request).pipe(map( (response: any)=>{
       if(!!response.user){
         return response.user;
       }

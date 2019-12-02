@@ -5,7 +5,7 @@
       <img [src]="profile.picture" />
     </div>
   </div>
-  <h1 class="name">{{ profile.given_name }} {{ profile.family_name }}</h1>
+
  
   <div class="attr" >
     <div class="label">Nickname</div>
@@ -35,7 +35,7 @@
     </mat-form-field>
  
   </div>
-  <button mat-raised-button color="primary"  (onClick)="updateProfile()" class="form-submit-button">Submit</button> 
+  <button mat-raised-button color="primary"  (click)="updateProfile()" class="form-submit-button">Submit</button> 
 </div>
 
 
