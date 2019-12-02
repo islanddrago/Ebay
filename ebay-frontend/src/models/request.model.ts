@@ -52,3 +52,21 @@ export class UnRSVPForEventRequest implements BaseRequest {
     this.body = null;
   }
 }
+
+export class CreateEventRequest implements BaseRequest {
+  url: string;
+  body: any;
+
+  constructor(title: string, description: string, location: string, startDate: string, endDate: string) {
+    this.url = '/event';
+    this.body = {
+      event: {
+        title,
+        description,
+        location,
+        startDate,
+        endDate,
+      }
+    };
+  }
+}

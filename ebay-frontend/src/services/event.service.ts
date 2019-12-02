@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
-import { GetEventDetailsRequest, GetUpcomingEventsRequest, RSVPForEventRequest, UnRSVPForEventRequest } from '../models/request.model';
+import { GetEventDetailsRequest, GetUpcomingEventsRequest, RSVPForEventRequest, UnRSVPForEventRequest, CreateEventRequest } from '../models/request.model';
 import { map } from 'rxjs/operators';
 import { Event } from '../models/event.model';
 import { User } from 'src/models/user.model';
@@ -47,6 +47,16 @@ export class EventService {
     return this.apiService.postRequest(request).pipe(map((response: any) => {
       if(!!response.user) {
         return new User(response.user);
+      }
+      return null;
+    }));
+  }
+
+  createEvent(title: string, description: string, location: string, startDate: string, endDate: string) {
+    const request = new CreateEventRequest(title, description, location, startDate, endDate);
+    return this.apiService.postRequest(request).pipe(map((response: any) => {
+      if (!!response.event) {
+        return response.event;
       }
       return null;
     }));

@@ -1,13 +1,7 @@
-.form-container {
+:host {
   display: flex;
   flex-direction: column;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 5px;
-}
-  
-.form-container > * {
-  width: 100%;
+  margin: 1rem;
 }
 
 .form-submit-button{
