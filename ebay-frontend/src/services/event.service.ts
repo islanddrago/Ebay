@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
-import { GetEventDetailsRequest } from '../models/request.model';
+import { GetEventDetailsRequest, GetUpcomingEventsRequest } from '../models/request.model';
 import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Event } from '../models/event.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +16,16 @@ export class EventService {
     return this.apiService.getRequest(request).pipe(map((response: any) => {
       if (!!response.body) {
         return response.body;
+      }
+      return null;
+    }));
+  }
+
+  getUpcomingEvents() {
+    const request = new GetUpcomingEventsRequest();
+    return this.apiService.getRequest(request).pipe(map((response: any) => {
+      if (!!response.events) {
+        return response.events.map(event => new Event(event));
       }
       return null;
     }));

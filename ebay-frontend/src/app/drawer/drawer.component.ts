@@ -19,7 +19,7 @@ export class DrawerComponent implements OnInit {
     },
     {
       icon: 'lni-calendar',
-      text: 'Passed Events',
+      text: 'My RSVPs',
       url: '/past-events',
     },
     {

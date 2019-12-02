@@ -1,6 +1,6 @@
 import { CreateEventRequest, RemoveUserFromRSVPRequest } from "../../controllers/event/event.request";
 import { RSVPToEventResponse, UnRSVPToEventResponse } from "../../controllers/event/event.response";
-import { addRSVPToEvent, createEvent, deleteEvent, getEventByID, removeRSVPFromEvent } from "../../db/event.db";
+import { addRSVPToEvent, createEvent, deleteEvent, getAllEvents, getEventByID, removeRSVPFromEvent } from "../../db/event.db";
 import { addEventToRSVP, getUserByID, removeEventFromRSVP } from "../../db/user.db";
 import { Event } from "../../models/event.model";
 import { User } from "../../models/user.model";
@@ -8,6 +8,17 @@ import { User } from "../../models/user.model";
 const EventService = {
   async getEventByID(eventID: string): Promise<Event> {
     return getEventByID(eventID);
+  },
+
+  async getUpcomingEvents(): Promise<Event[]> {
+    const now = new Date();
+    try {
+      const events: Event[] = await getAllEvents();
+      return events.filter((event) => event.startDate > now);
+    } catch (error) {
+      console.log("caught: ", error);
+      throw error;
+    }
   },
 
   async createEvent(user: User, createEventRequest: CreateEventRequest): Promise<Event> {

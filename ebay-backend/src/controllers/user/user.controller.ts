@@ -1,13 +1,14 @@
 import { Request, Response, Router } from "express";
 import { getUserByID } from "../../db/user.db";
+import { authenticate, jwtCheck } from "../../middleware/authentication.middleware";
 import UserService from "../../services/user/user.service";
 import { UpdateUserRequest } from "./user.request";
 
 const router = Router();
 
 // user routes
-router.get("/:userID", getUser);
-router.put("/", updateUser);
+router.get("/:userID", jwtCheck, authenticate, getUser);
+router.put("/", jwtCheck, authenticate, updateUser);
 
 /**
  * update user details

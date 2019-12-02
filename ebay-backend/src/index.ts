@@ -22,8 +22,6 @@ const port = process.env.PORT || 6969;
 // middleware
 app.use(express.json());
 app.use(cors());
-app.use(jwtCheck);
-app.use(authenticate);
 app.use(reviveBody);
 
 // use controllers to manage different endpoints

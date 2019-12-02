@@ -1,27 +1,12 @@
-.upcoming-card {
-  background-color: #FFFFFF;
-  display: flex;
-  justify-content: space-between;
-}
-.left {
-  
-}
-.right {
-  color: gray;
-  display: flex;
-  align-items: center;
-}
-
-.upcoming-header-image {
-  background-image: url(https://avatars1.githubusercontent.com/u/14041091?s=460&v=4);
-  background-size: cover;
+:host {
+  margin: 1rem;
 }
 
 .createEventButton {
   background-color: #37A1B1;
   position: fixed;
-  right: 50px;
-  bottom: 50px;
+  right: 1rem;
+  bottom: 1rem;
 }
 
 
