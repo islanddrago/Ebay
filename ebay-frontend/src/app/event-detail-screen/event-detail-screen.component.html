@@ -1,6 +1,9 @@
-<div>
+<div *ngIf="isLoading" class="loading">
+    <mat-spinner></mat-spinner>
+</div>
+<div *ngIf="!isLoading">
     <agm-map [latitude]='event.latitude' [longitude]='event.longitude' [mapTypeId]='mapType' [zoom]='12'></agm-map>
-    <div id="dateInfo">
+    <div id="dateInfo" class="mat-elevation-z2">
         <h2 class="bold">{{ event.startDate.toDateString() }}</h2>
         <h2 class="notBold">{{ startTime }}</h2>
     </div>
@@ -12,9 +15,9 @@
         <div id="infoBlock">
             <img id="hostProfileImg" src="{{ event.host_picture }}">
             <div id="eventInfo">
-                <h1 class="bold">{{ event.title }}</h1>
-                <h3><span class="notBold">Hosted by:</span><span id="name" class="bold">{{ event.host_name }}</span></h3>
-                <h3 class="notBold">{{ startTime }} - {{ endTime }}</h3>
+                <h1 class="title bold">{{ event.title }}</h1>
+                <p class="subtitle">Hosted by: {{ event.host_name }}</p>
+                <p class="subtitle notBold">{{ startTime }} - {{ endTime }}</p>
             </div>
         </div>
         <div id="descriptionBlock">
@@ -26,7 +29,7 @@
             <mat-list class="rsvps">
                 <mat-list-item class="rsvp" *ngFor="let rsvp of rsvps">
                     <img class="rsvpImg" src="{{ rsvp.picture }}"/>
-                    <p>{{ rsvp.name }}</p>
+                    <p>{{ getName(rsvp) }}</p>
                 </mat-list-item>
             </mat-list>
         </div>

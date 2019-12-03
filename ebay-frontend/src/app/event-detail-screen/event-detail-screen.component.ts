@@ -73,4 +73,8 @@ export class EventDetailScreenComponent implements OnInit {
     }
   }
 
+  getName(rsvp: User) {
+    return rsvp.name || rsvp.given_name || rsvp.nickname;
+  }
+
 }

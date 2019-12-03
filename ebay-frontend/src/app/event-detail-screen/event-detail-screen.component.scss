@@ -1,3 +1,15 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+}
+
 agm-map {
     height: 250px;
     width: 100%;
@@ -21,6 +33,7 @@ agm-map {
     display: flex;
     background-color: #37A1B1;
     padding: 10px;
+    justify-content: space-between;
 }
 
 #dateInfo > h2 {
@@ -34,7 +47,6 @@ agm-map {
 
 #infoBlock {
     display: flex;
-    align-items: center;
     height: auto;
 }
 
@@ -57,6 +69,14 @@ agm-map {
 
 .bold {
     font-weight: bolder;
+}
+
+.title {
+    margin: 0;
+    margin-bottom: 0.5rem;
+}
+.subtitle {
+    margin: 0;
 }
 
 .rsvpImg {
