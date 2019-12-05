@@ -41,6 +41,12 @@ mat-spinner {
   }
 }
 
+.name {
+  text-align: center;
+  margin-top: 3rem;
+  margin-bottom: 0;
+}
+
 .attr {
   display: flex;
   flex-direction: row;
@@ -50,7 +56,6 @@ mat-spinner {
 
 .label {
   font-weight: bolder;
-  // font-size: larger;
   color: rgba($color: #000000, $alpha: 1.0);
 }
 

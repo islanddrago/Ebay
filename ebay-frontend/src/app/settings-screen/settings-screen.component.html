@@ -10,29 +10,33 @@
   <div class="attr">
     <div class="label">Nickname</div>
     <mat-form-field>
-      <input matInput placeholder="Nickname" [(ngModel)]="profile.nickname" required>
+      <input matInput [(ngModel)]="profile.nickname" required [disabled]="buttonLoading">
     </mat-form-field>
     <!--   <div class="value">{{ profile.nickname }}</div>-->
   </div>
   <div class="attr">
     <div class="label">Email</div>
     <mat-form-field>
-      <input matInput placeholder="email" [(ngModel)]="profile.email" required>
+      <input matInput [(ngModel)]="profile.email" required [disabled]="buttonLoading">
     </mat-form-field>
 
   </div>
   <div class="attr">
     <div class="label">First Name</div>
     <mat-form-field>
-      <input matInput placeholder="First Name" [(ngModel)]="profile.given_name">
+      <input matInput [(ngModel)]="profile.given_name" [disabled]="buttonLoading">
     </mat-form-field>
   </div>
   <div class="attr">
-    <div class="label">First Name</div>
+    <div class="label">Last Name</div>
     <mat-form-field>
-      <input matInput placeholder="Last Name" [(ngModel)]="profile.family_name">
+      <input matInput [(ngModel)]="profile.family_name" [disabled]="buttonLoading">
     </mat-form-field>
 
   </div>
-  <button mat-raised-button color="primary" (click)="updateProfile()" class="form-submit-button">Submit</button>
+  <button mat-raised-button color="primary" (click)="updateProfile()" class="form-submit-button"
+    [disabled]="buttonLoading">
+    <span *ngIf="!buttonLoading">Submit</span>
+    <mat-spinner *ngIf="buttonLoading" class="spinner"></mat-spinner>
+  </button>
 </div>

@@ -13,6 +13,18 @@ export class GetUserDetailsRequest implements BaseRequest {
   }
 }
 
+export class GetUsersRequest implements BaseRequest {
+  url: string;
+  body: any;
+
+  constructor(userIDs: Array<string>) {
+    this.url = '/user/batch';
+    this.body = {
+      users: userIDs,
+    };
+  }
+}
+
 export class GetEventDetailsRequest implements BaseRequest {
   url: string;
   body: any;
@@ -33,11 +45,11 @@ export class GetUpcomingEventsRequest implements BaseRequest {
   }
 }
 
-export class UpdateProfileRequest implements BaseRequest{
+export class UpdateProfileRequest implements BaseRequest {
   url: string;
   body: any;
 
-  constructor(email: string, given_name:string,family_name:string, nickname:string ) {
+  constructor(email: string, given_name: string, family_name: string, nickname: string) {
     this.url = '/user';
     this.body = {
       email,
@@ -81,8 +93,18 @@ export class CreateEventRequest implements BaseRequest {
         description,
         location,
         startDate,
-        endDate, 
+        endDate,
       }
     };
+  }
+}
+
+export class DeleteEventRequest implements BaseRequest {
+  url: string;
+  body: any;
+
+  constructor(eventID: string) {
+    this.url = `/event/${eventID}`;
+    this.body = null;
   }
 }

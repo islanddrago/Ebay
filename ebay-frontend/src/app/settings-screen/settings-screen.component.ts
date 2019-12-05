@@ -13,6 +13,7 @@ import { SelectionModel, UniqueSelectionDispatcher } from '@angular/cdk/collecti
 })
 export class SettingsScreenComponent implements OnInit {
   loading = true;
+  buttonLoading = false;
   profile: User;
 
   constructor(private route: ActivatedRoute, private authService: AuthService, private identityService: IdentityService) { }
@@ -27,8 +28,9 @@ export class SettingsScreenComponent implements OnInit {
 
   }
   updateProfile() {
+    this.buttonLoading = true;
     this.identityService.updateUser(this.profile.email, this.profile.given_name, this.profile.family_name, this.profile.nickname).subscribe((response) => {
-
+      this.buttonLoading = false;
     });
   }
 
