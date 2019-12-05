@@ -11,3 +11,7 @@ export class UpdateUserRequest {
   public picture: string;
   public nickname: string;
 }
+
+export class GetUsersRequest {
+  public users: Array<string>;
+}

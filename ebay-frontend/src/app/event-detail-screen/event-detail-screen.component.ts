@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { EventService } from 'src/services/event.service';
-import { Event } from 'src/models/event.model';
-import { ActivatedRoute } from '@angular/router';
-import { User } from 'src/models/user.model';
+import { Component, OnInit } from '@angular/core';
+import { EventService } from '../../services/event.service';
+import { Event } from '../../models/event.model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { User } from '../../models/user.model';
 import { IdentityService } from 'src/services/identity.service';
 
 @Component({
@@ -20,61 +20,111 @@ export class EventDetailScreenComponent implements OnInit {
   rsvped = false;
   shouldRsvp = "RSVP";
   isLoading = true;
+  buttonLoading = false;
+  rsvpLoading = true;
   error = false;
   mapType = 'roadmap';
 
-  constructor(private eventService: EventService, private route: ActivatedRoute, private identityService: IdentityService) { }
+  user: User;
+  userID: string;
+  hostID: string;
+
+  constructor(private eventService: EventService, private route: ActivatedRoute, private router: Router, private identityService: IdentityService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.eventID = params['id'];
-      this.eventService.getEvent(this.eventID).subscribe((event: Event) => {
-        if (!!event) {
-          this.identityService.fetchLoggedInUserDetails().subscribe((response: any) => {
-            if((response.user as User).rsvps.includes(this.eventID)) {
-              this.rsvped = true;
-              this.shouldRsvp = "unRSVP";
+      const subscription = this.identityService.loggedInUser.subscribe((user) => {
+        if (!!user) {
+          this.user = user;
+          this.userID = user.user_id;
+          this.eventService.getEvent(this.eventID).subscribe((event: Event) => {
+            if (!!event) {
+              subscription.unsubscribe();
+              this.hostID = event.host;
+              if (user.rsvps.includes(this.eventID)) {
+                this.rsvped = true;
+                this.shouldRsvp = "unRSVP";
+              }
+
+              this.event = new Event(event);
+              this.startTime = this.formatTime(this.event.startDate);
+              this.endTime = this.formatTime(this.event.endDate);
+
+              this.loadRSVPs();
+            } else {
+              this.error = true;
             }
+            this.isLoading = false;
           });
-          this.event = new Event(event);
-          this.startTime = this.formatTime(this.event.startDate);
-          this.endTime = this.formatTime(this.event.endDate);
-          for (const id of this.event.rsvps) {
-            this.identityService.fetchUserDetails(id).subscribe((response: any) => {
-              this.rsvps.push(response.user as User);
-            });
-          }
-        } else {
-          this.error = true;
         }
-        this.isLoading = false;
-      });
+      })
     });
   }
 
-  formatTime(d: Date):string {
-    const m = (d.getHours() > 12) ? "PM" : "AM";
-    const h = (m == "PM") ? (d.getHours() - 12) : d.getHours();
-    
-    return h + ":" + d.getMinutes() + " " + m;
+  loadRSVPs() {
+    this.rsvpLoading = true;
+    this.identityService.getUsers(this.event.rsvps).subscribe((users: Array<User>) => {
+      this.rsvpLoading = false;
+      if (!!users) {
+        this.rsvps = users;
+      }
+    });
+  }
+
+  formatTime(d: Date): string {
+    const m = (d.getHours() >= 12) ? "PM" : "AM";
+    const h = (d.getHours() > 12) ? (d.getHours() - 12) : d.getHours();
+
+    return h + ":" + this.padTwoDigits(d.getMinutes()) + " " + m;
   }
 
   rsvpForEvent() {
-    if(!this.rsvped) { // RSVP if false
+    this.buttonLoading = true;
+    if (!this.rsvped) { // RSVP if false
       this.eventService.rsvpForEvent(this.eventID).subscribe((user: User) => {
-          this.rsvped = true;
-          this.shouldRsvp = "unRSVP";
+        this.buttonLoading = false;
+        this.rsvped = true;
+        this.shouldRsvp = "unRSVP";
+        this.rsvps.push(this.user);
+        this.user.rsvps.push(this.eventID);
+        this.identityService.loggedInUser.next(this.user);
       });
     } else { // unRSVP if true
       this.eventService.unRsvpForEvent(this.eventID).subscribe((user: User) => {
-            this.rsvped = false;
-            this.shouldRsvp = "RSVP";
+        this.buttonLoading = false;
+        this.rsvped = false;
+        this.shouldRsvp = "RSVP";
+        const userIndex = this.rsvps.findIndex(user => user.user_id === this.userID);
+        if (userIndex >= 0) {
+          this.rsvps.splice(userIndex, 1);
+        }
+        const eventIndex = this.user.rsvps.indexOf(this.eventID);
+        if (eventIndex >= 0) {
+          this.user.rsvps.splice(eventIndex, 1);
+          this.identityService.loggedInUser.next(this.user);
+        }
       });
     }
+  }
+
+  deleteEvent() {
+    this.buttonLoading = true;
+    this.eventService.deleteEvent(this.eventID).subscribe((event: Event) => {
+      this.buttonLoading = false;
+      this.router.navigate(['/upcoming-events']);
+    });
+  }
+
+  openProfile(rsvp: User) {
+    this.router.navigate(['/profile', rsvp.user_id]);
   }
 
   getName(rsvp: User) {
     return rsvp.name || rsvp.given_name || rsvp.nickname;
   }
 
+  private padTwoDigits(num: number): string {
+    return (num < 10 ? '0' : '') + num;
+  }
 }

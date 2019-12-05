@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { GetUserDetailsRequest } from 'src/models/request.model';
+import { GetUserDetailsRequest, GetUsersRequest } from 'src/models/request.model';
 import { AuthService } from './auth.service';
 import { ApiService } from './api.service';
 import { User } from '../models/user.model';
@@ -35,11 +35,22 @@ export class IdentityService {
     const request = new GetUserDetailsRequest(userID);
     return this.apiService.getRequest(request);
   }
+
   updateUser(email: string, given_name: string, family_name: string, nickname: string) {
     const request = new UpdateProfileRequest(email, given_name, family_name, nickname);
     return this.apiService.putRequest(request).pipe(map((response: any) => {
       if (!!response.user) {
         return response.user;
+      }
+      return null;
+    }));
+  }
+
+  getUsers(userIDs: Array<string>) {
+    const request = new GetUsersRequest(userIDs);
+    return this.apiService.postRequest(request).pipe(map((response: any) => {
+      if (!!response.users) {
+        return response.users;
       }
       return null;
     }));

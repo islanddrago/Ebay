@@ -1,21 +1,18 @@
-<pre>{{ startDate }}</pre>
-<mat-form-field>
-    <input matInput placeholder="Title" [(ngModel)]="title">
-</mat-form-field>
-<mat-form-field>
-    <input matInput placeholder="Description" [(ngModel)]="description">
-</mat-form-field>
-<mat-form-field>
-    <input matInput placeholder="Location" [(ngModel)]="location">
-</mat-form-field>
-<mat-form-field>
-    <input matInput [matDatepicker]="startPicker" placeholder="Start date" [(ngModel)]="startDate">
-    <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
-    <mat-datepicker #startPicker></mat-datepicker>
-</mat-form-field>
-<mat-form-field>
-    <input matInput [matDatepicker]="endPicker" placeholder="End date" [(ngModel)]="endDate">
-    <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
-    <mat-datepicker #endPicker></mat-datepicker>
-</mat-form-field>
-<button mat-raised-button color="primary" (click)="createEvent()" class="form-submit-button">Submit</button>
+<div class="wrapper">
+    <h1>Create Event</h1>
+    <mat-form-field>
+        <input matInput placeholder="Title" [(ngModel)]="title" [disabled]="loading">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Description" [(ngModel)]="description" [disabled]="loading">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Location" [(ngModel)]="location" [disabled]="loading">
+    </mat-form-field>
+    <date-time (valueChanged)="setStartDate($event)" placeholder="Start Date" [disabled]="loading"></date-time>
+    <date-time (valueChanged)="setEndDate($event)" placeholder="End Date" [disabled]="loading"></date-time>
+    <button mat-raised-button color="primary" (click)="createEvent()" class="form-submit-button" [disabled]="loading || !formValid()">
+        <span *ngIf="!loading">Submit</span>
+        <mat-spinner *ngIf="loading" class="spinner"></mat-spinner>
+    </button>
+</div>

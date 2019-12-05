@@ -1,0 +1,19 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.wrapper {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.date {
+  width: 70%;
+}
+.hour, .minute {
+  width: 15%;
+  margin-left: 0.5rem;
+}

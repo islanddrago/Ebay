@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
-import { GetEventDetailsRequest, GetUpcomingEventsRequest, RSVPForEventRequest, UnRSVPForEventRequest, CreateEventRequest } from '../models/request.model';
+import { GetEventDetailsRequest, GetUpcomingEventsRequest, RSVPForEventRequest, UnRSVPForEventRequest, CreateEventRequest, DeleteEventRequest } from '../models/request.model';
 import { map } from 'rxjs/operators';
 import { Event } from '../models/event.model';
 import { User } from 'src/models/user.model';
@@ -35,7 +35,7 @@ export class EventService {
   rsvpForEvent(eventID: string) {
     const request = new RSVPForEventRequest(eventID);
     return this.apiService.postRequest(request).pipe(map((response: any) => {
-      if(!!response.user) {
+      if (!!response.user) {
         return new User(response.user);
       }
       return null;
@@ -45,7 +45,7 @@ export class EventService {
   unRsvpForEvent(eventID: string) {
     const request = new UnRSVPForEventRequest(eventID);
     return this.apiService.postRequest(request).pipe(map((response: any) => {
-      if(!!response.user) {
+      if (!!response.user) {
         return new User(response.user);
       }
       return null;
@@ -57,6 +57,16 @@ export class EventService {
     return this.apiService.postRequest(request).pipe(map((response: any) => {
       if (!!response.event) {
         return response.event;
+      }
+      return null;
+    }));
+  }
+
+  deleteEvent(eventID: string) {
+    const request = new DeleteEventRequest(eventID);
+    return this.apiService.deleteRequest(request).pipe(map((response: any) => {
+      if (!!response.body) {
+        return response.body;
       }
       return null;
     }));

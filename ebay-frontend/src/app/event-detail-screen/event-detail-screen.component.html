@@ -7,31 +7,60 @@
         <h2 class="bold">{{ event.startDate.toDateString() }}</h2>
         <h2 class="notBold">{{ startTime }}</h2>
     </div>
-    <div id="bodyBlock">
-        <div id="addressRsvpBlock">
-            <h1 class="bold" id="location">{{ event.location }}</h1>
-            <button mat-raised-button id="rsvpButton" color="primary" (click)="rsvpForEvent()">{{ shouldRsvp }}</button>
-        </div>
-        <div id="infoBlock">
-            <img id="hostProfileImg" src="{{ event.host_picture }}">
-            <div id="eventInfo">
-                <h1 class="title bold">{{ event.title }}</h1>
-                <p class="subtitle">Hosted by: {{ event.host_name }}</p>
-                <p class="subtitle notBold">{{ startTime }} - {{ endTime }}</p>
+    <div class="body-wrapper">
+        <div id="bodyBlock">
+            <div id="infoBlock">
+                <img id="hostProfileImg" src="{{ event.host_picture }}">
+                <div id="eventInfo">
+                    <h1 class="title bold">{{ event.title }}</h1>
+                    <p class="subtitle">Hosted by: {{ event.host_name }}</p>
+                    <p class="subtitle notBold">{{ startTime }} - {{ endTime }}</p>
+                    <div class="address bold" id="location">{{ event.location }}</div>
+                </div>
             </div>
-        </div>
-        <div id="descriptionBlock">
-            <h2 class="bold">Description</h2>
-            <p>{{ event.description }}</p>
-        </div>
-        <div id="rsvpBlock">
-            <h2 class="bold">RSVPs</h2>
-            <mat-list class="rsvps">
-                <mat-list-item class="rsvp" *ngFor="let rsvp of rsvps">
-                    <img class="rsvpImg" src="{{ rsvp.picture }}"/>
-                    <p>{{ getName(rsvp) }}</p>
-                </mat-list-item>
-            </mat-list>
+            <!-- <div id="addressRsvpBlock"> -->
+                <!-- <button mat-raised-button id="rsvpButton" color="primary" *ngIf="hostID !== userID"
+                    [disabled]="buttonLoading" (click)="rsvpForEvent()">
+                    <span *ngIf="!buttonLoading">{{ shouldRsvp }}</span>
+                    <mat-spinner *ngIf="buttonLoading" class="spinner"></mat-spinner>
+                </button>
+                <button mat-raised-button id="rsvpButton" color="primary" *ngIf="hostID === userID"
+                    [disabled]="buttonLoading" (click)="deleteEvent()">
+                    <span *ngIf="!buttonLoading">Delete Event</span>
+                    <mat-spinner *ngIf="buttonLoading" class="spinner"></mat-spinner>
+                </button> -->
+            <!-- </div> -->
+            <div id="descriptionBlock">
+                <div class="description-header">
+                    <h2 class="bold">Description</h2>
+                    <button mat-raised-button id="rsvpButton" color="primary" *ngIf="hostID !== userID"
+                        [disabled]="buttonLoading" (click)="rsvpForEvent()">
+                        <span *ngIf="!buttonLoading">{{ shouldRsvp }}</span>
+                        <mat-spinner *ngIf="buttonLoading" class="spinner"></mat-spinner>
+                    </button>
+                    <button mat-raised-button id="rsvpButton" color="primary" *ngIf="hostID === userID"
+                        [disabled]="buttonLoading" (click)="deleteEvent()">
+                        <span *ngIf="!buttonLoading">Delete Event</span>
+                        <mat-spinner *ngIf="buttonLoading" class="spinner"></mat-spinner>
+                    </button>
+                </div>
+                <p class="description">{{ event.description }}</p>
+            </div>
+            <div id="rsvpBlock">
+                <h2 class="bold">RSVPs</h2>
+                <div class="rsvps">
+                    <div class="spinner-wrapper">
+                        <mat-spinner *ngIf="rsvpLoading" class="spinner"></mat-spinner>
+                    </div>
+                    <mat-card-subtitle *ngIf="!rsvpLoading && rsvps.length === 0" class="no-rsvps">No RSVPs yet.</mat-card-subtitle>
+                    <ng-container *ngIf="!rsvpLoading">
+                        <mat-card class="rsvp" *ngFor="let rsvp of rsvps" (click)="openProfile(rsvp)">
+                            <img class="rsvpImg" src="{{ rsvp.picture }}" />
+                            <p>{{ getName(rsvp) }}</p>
+                        </mat-card>
+                    </ng-container>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -1,0 +1,31 @@
+<div class="wrapper">
+  <mat-form-field class="date">
+    <input matInput [matDatepicker]="picker" [placeholder]="placeholder" [(ngModel)]="date" [required]="true"
+      (dateChange)="updateValue()" [disabled]="disabled">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field class="hour" floatLabel="always">
+    <mat-select name="hour" [(ngModel)]="hour" [required]="true" (selectionChange)="updateValue()" placeholder="hour"
+      [disabled]="disabled">
+      <mat-option *ngFor="let num of hourOptions" [value]="num">
+        {{num}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="minute" floatLabel="always">
+    <mat-select name="minute" [(ngModel)]="minute" [required]="true" (selectionChange)="updateValue()"
+      [disabled]="disabled" placeholder="minute">
+      <mat-option *ngFor="let num of minuteOptions" [value]="num">
+        {{num}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<mat-radio-group [(ngModel)]="amPm" (change)="updateValue()" [disabled]="disabled">
+  <mat-radio-button value="am">AM</mat-radio-button>
+  <mat-radio-button style="margin-left: 1rem;" value="pm">PM</mat-radio-button>
+</mat-radio-group>

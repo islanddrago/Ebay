@@ -28,10 +28,11 @@ import { EventDetailScreenComponent } from './event-detail-screen/event-detail-s
 import { AgmCoreModule } from '@agm/core';
 import { CreateEventScreenComponent } from './create-event-screen/create-event-screen.component';
 import { FormsModule } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material';
+import { MatFormFieldModule, MatSelectModule, MatRadioModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
 import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DateTimeComponent } from './date-time/date-time.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ProfileScreenComponent,
     EventCardComponent,
     CreateEventScreenComponent,
+    DateTimeComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,6 +60,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatButtonModule,
     MatIconModule,
     MatSidenavModule,
+    MatSelectModule,
+    MatRadioModule,
     BrowserAnimationsModule,
     LayoutModule,
     MatListModule,

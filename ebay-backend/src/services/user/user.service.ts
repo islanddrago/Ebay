@@ -1,5 +1,5 @@
-import { UpdateUserRequest } from "../../controllers/user/user.request";
-import { updateUser } from "../../db/user.db";
+import { UpdateUserRequest, GetUsersRequest } from "../../controllers/user/user.request";
+import { updateUser, getUserByID } from "../../db/user.db";
 import { User } from "../../models/user.model";
 
 /**
@@ -15,5 +15,14 @@ const UserService = {
     const newUserData = { ...user, ...updateRequest } as User;
     return updateUser(newUserData);
   },
+
+  async getUsers(request: GetUsersRequest): Promise<Array<User>> {
+    let promises = [];
+    for (let userID of request.users) {
+      promises.push(getUserByID(userID));
+    }
+    const users = await Promise.all(promises);
+    return users;
+  }
 };
 export default UserService;

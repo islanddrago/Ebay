@@ -2,12 +2,13 @@ import { Request, Response, Router } from "express";
 import { getUserByID } from "../../db/user.db";
 import { authenticate, jwtCheck } from "../../middleware/authentication.middleware";
 import UserService from "../../services/user/user.service";
-import { UpdateUserRequest } from "./user.request";
+import { UpdateUserRequest, GetUsersRequest } from "./user.request";
 
 const router = Router();
 
 // user routes
 router.get("/:userID", jwtCheck, authenticate, getUser);
+router.post("/batch", jwtCheck, authenticate, getUsers);
 router.put("/", jwtCheck, authenticate, updateUser);
 
 /**
@@ -42,6 +43,18 @@ async function getUser(req: Request, res: Response) {
 
   // return the user
   res.status(200).json({ user });
+}
+
+async function getUsers(req: Request, res: Response) {
+  const request = req.body as GetUsersRequest;
+  try {
+    const users = await UserService.getUsers(request);
+    res.status(200).json({ users });
+    return;
+  } catch ({ message: error }) {
+    console.log("err: ", error);
+    res.status(500).json({ error });
+  }
 }
 
 export default router;
